@@ -17,11 +17,9 @@
             <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="pavedHighwayAmount"><span jhiTranslate="logValueApp.estimate.pavedHighwayAmount">Paved Highway Amount</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="nonPavedHighwayAmount"><span jhiTranslate="logValueApp.estimate.nonPavedHighwayAmount">Non Paved Highway Amount</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="containsToll"><span jhiTranslate="logValueApp.estimate.containsToll">Contains Toll</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="tollValue"><span jhiTranslate="logValueApp.estimate.tollValue">Toll Value</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="createdAt"><span jhiTranslate="logValueApp.estimate.createdAt">Created At</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="roadTypeId"><span jhiTranslate="logValueApp.estimate.roadType">Road Type</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="vehicleTypeId"><span jhiTranslate="logValueApp.estimate.vehicleType">Vehicle Type</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="createdAt"><span jhiTranslate="logValueApp.estimate.createdAt">Created At</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th></th>
             </tr>
             </thead>
@@ -30,9 +28,6 @@
                 <td><a [routerLink]="['/estimate', estimate.id, 'view' ]">{{estimate.id}}</a></td>
                 <td>{{estimate.pavedHighwayAmount}}</td>
                 <td>{{estimate.nonPavedHighwayAmount}}</td>
-                <td>{{estimate.containsToll}}</td>
-                <td>{{estimate.tollValue}}</td>
-                <td>{{estimate.createdAt | date:'medium'}}</td>
                 <td>
                     <div *ngIf="estimate.roadTypeId">
                         <a [routerLink]="['../road-type', estimate.roadTypeId , 'view' ]" >{{estimate.roadTypeId}}</a>
@@ -43,6 +38,7 @@
                         <a [routerLink]="['../vehicle-type', estimate.vehicleTypeId , 'view' ]" >{{estimate.vehicleTypeId}}</a>
                     </div>
                 </td>
+                <td>{{estimate.createdAt | date:'medium'}}</td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"

@@ -6,6 +6,7 @@ import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 import java.io.Serializable;
 import java.time.ZonedDateTime;
@@ -33,22 +34,36 @@ public class Estimate implements Serializable {
     @Column(name = "non_paved_highway_amount")
     private Integer nonPavedHighwayAmount;
 
+    @NotNull
+    @Column(name = "load_amount")
+    private Integer loadAmount;
+
+    @NotNull
     @Column(name = "contains_toll")
     private Boolean containsToll;
 
     @Column(name = "toll_value")
     private Float tollValue;
 
+    @NotNull
     @Column(name = "created_at")
     private ZonedDateTime createdAt;
 
+    @NotNull
     @ManyToOne
     @JsonIgnoreProperties("")
     private RoadType roadType;
 
+    @NotNull
     @ManyToOne
     @JsonIgnoreProperties("")
     private VehicleType vehicleType;
+
+
+    @NotNull
+    @ManyToOne
+    @JsonIgnoreProperties("")
+    private User owner;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -149,6 +164,35 @@ public class Estimate implements Serializable {
     public void setVehicleType(VehicleType vehicleType) {
         this.vehicleType = vehicleType;
     }
+
+    /**
+     * @return the loadAmount
+     */
+    public Integer getLoadAmount() {
+        return loadAmount;
+    }
+
+    /**
+     * @param loadAmount the loadAmount to set
+     */
+    public void setLoadAmount(Integer loadAmount) {
+        this.loadAmount = loadAmount;
+    }
+
+    /**
+     * @return the owner
+     */
+    public User getOwner() {
+        return owner;
+    }
+
+    /**
+     * @param owner the owner to set
+     */
+    public void setOwner(User owner) {
+        this.owner = owner;
+    }
+
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
     @Override

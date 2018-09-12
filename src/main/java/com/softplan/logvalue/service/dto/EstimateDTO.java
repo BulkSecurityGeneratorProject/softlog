@@ -15,6 +15,8 @@ public class EstimateDTO implements Serializable {
 
     private Integer nonPavedHighwayAmount;
 
+    private Integer loadAmount;
+
     private Boolean containsToll;
 
     private Float tollValue;
@@ -24,6 +26,10 @@ public class EstimateDTO implements Serializable {
     private Long roadTypeId;
 
     private Long vehicleTypeId;
+
+    private Long ownerId;
+
+    private String ownerName;
 
     public Long getId() {
         return id;
@@ -87,6 +93,48 @@ public class EstimateDTO implements Serializable {
 
     public void setVehicleTypeId(Long vehicleTypeId) {
         this.vehicleTypeId = vehicleTypeId;
+    }
+
+    /**
+     * @return the loadAmount
+     */
+    public Integer getLoadAmount() {
+        return loadAmount;
+    }
+
+    /**
+     * @param loadAmount the loadAmount to set
+     */
+    public void setLoadAmount(Integer loadAmount) {
+        this.loadAmount = loadAmount;
+    }
+    
+    /**
+     * @return the ownerId
+     */
+    public Long getOwnerId() {
+        return ownerId;
+    }
+
+    /**
+     * @param ownerId the ownerId to set
+     */
+    public void setOwnerId(Long ownerId) {
+        this.ownerId = ownerId;
+    }
+
+    /**
+     * @return the ownerName
+     */
+    public String getOwnerName() {
+        return ownerName;
+    }
+
+    /**
+     * @param ownerName the ownerName to set
+     */
+    public void setOwnerName(String ownerName) {
+        this.ownerName = ownerName;
     }
 
     @Override

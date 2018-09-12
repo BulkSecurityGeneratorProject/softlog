@@ -29,8 +29,12 @@
                 <constraints nullable="true" />
             </column>
 
+            <column name="load_amount" type="integer">
+                <constraints nullable="false" />
+            </column>
+
             <column name="contains_toll" type="boolean">
-                <constraints nullable="true" />
+                <constraints nullable="false" />
             </column>
 
             <column name="toll_value" type="${floatType}">
@@ -38,15 +42,19 @@
             </column>
 
             <column name="created_at" type="datetime">
-                <constraints nullable="true" />
+                <constraints nullable="false" />
             </column>
 
             <column name="road_type_id" type="bigint">
-                <constraints nullable="true" />
+                <constraints nullable="false" />
             </column>
 
             <column name="vehicle_type_id" type="bigint">
-                <constraints nullable="true" />
+                <constraints nullable="false" />
+            </column>
+
+            <column name="owner_id" type="bigint">
+                <constraints nullable="false" />
             </column>
 
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->

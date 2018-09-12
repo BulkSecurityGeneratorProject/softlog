@@ -18,6 +18,7 @@
             },
             "pavedHighwayAmount": "Paved Highway Amount",
             "nonPavedHighwayAmount": "Non Paved Highway Amount",
+            "loadAmount": "Load Amount",
             "containsToll": "Contains Toll",
             "tollValue": "Toll Value",
             "createdAt": "Created At",

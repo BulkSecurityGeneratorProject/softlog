@@ -20,5 +20,11 @@
                                  referencedColumnNames="id"
                                  referencedTableName="vehicle_type"/>
 
+        <addForeignKeyConstraint baseColumnNames="owner_id"
+                                 baseTableName="estimate"
+                                 constraintName="fk_estimate_owner_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="jhi_user"/>
+
     </changeSet>
 </databaseChangeLog>

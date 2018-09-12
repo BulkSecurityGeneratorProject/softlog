@@ -4,6 +4,7 @@ export interface IEstimate {
     id?: number;
     pavedHighwayAmount?: number;
     nonPavedHighwayAmount?: number;
+    loadAmount?: number;
     containsToll?: boolean;
     tollValue?: number;
     createdAt?: Moment;
@@ -16,6 +17,7 @@ export class Estimate implements IEstimate {
         public id?: number,
         public pavedHighwayAmount?: number,
         public nonPavedHighwayAmount?: number,
+        public loadAmount?: number,
         public containsToll?: boolean,
         public tollValue?: number,
         public createdAt?: Moment,
