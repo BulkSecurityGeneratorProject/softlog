@@ -1,0 +1,49 @@
+{
+    "name": "Estimate",
+    "fields": [
+        {
+            "fieldName": "pavedHighwayAmount",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "nonPavedHighwayAmount",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "containsToll",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "tollValue",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "createdAt",
+            "fieldType": "ZonedDateTime"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "roadType",
+            "otherEntityName": "roadType",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "vehicleType",
+            "otherEntityName": "vehicleType",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20180912004646",
+    "javadoc": "This class represent a calculation saved by the user",
+    "entityTableName": "estimate",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

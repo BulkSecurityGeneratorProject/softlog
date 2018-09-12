@@ -1,0 +1,32 @@
+{
+    "name": "VehicleType",
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "factor",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "regularLoad",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "maximumLoad",
+            "fieldType": "Integer"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20180912004645",
+    "javadoc": "This class represent a type of Vehicle",
+    "entityTableName": "vehicle_type",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

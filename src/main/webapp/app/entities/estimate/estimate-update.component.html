@@ -1,0 +1,65 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-estimate-heading" jhiTranslate="logValueApp.estimate.home.createOrEditLabel">Create or edit a Estimate</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!estimate.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="estimate.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="logValueApp.estimate.pavedHighwayAmount" for="field_pavedHighwayAmount">Paved Highway Amount</label>
+                    <input type="number" class="form-control" name="pavedHighwayAmount" id="field_pavedHighwayAmount"
+                        [(ngModel)]="estimate.pavedHighwayAmount" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="logValueApp.estimate.nonPavedHighwayAmount" for="field_nonPavedHighwayAmount">Non Paved Highway Amount</label>
+                    <input type="number" class="form-control" name="nonPavedHighwayAmount" id="field_nonPavedHighwayAmount"
+                        [(ngModel)]="estimate.nonPavedHighwayAmount" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="logValueApp.estimate.containsToll" for="field_containsToll">Contains Toll</label>
+                    <input type="checkbox" class="form-control" name="containsToll" id="field_containsToll"
+                        [(ngModel)]="estimate.containsToll" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="logValueApp.estimate.tollValue" for="field_tollValue">Toll Value</label>
+                    <input type="number" class="form-control" name="tollValue" id="field_tollValue"
+                        [(ngModel)]="estimate.tollValue" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="logValueApp.estimate.createdAt" for="field_createdAt">Created At</label>
+                    <div class="d-flex">
+                        <input id="field_createdAt" type="datetime-local" class="form-control" name="createdAt" [(ngModel)]="createdAt"
+                        />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="logValueApp.estimate.roadType" for="field_roadType">Road Type</label>
+                    <select class="form-control" id="field_roadType" name="roadType" [(ngModel)]="estimate.roadTypeId" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="roadTypeOption.id" *ngFor="let roadTypeOption of roadtypes; trackBy: trackRoadTypeById">{{roadTypeOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="logValueApp.estimate.vehicleType" for="field_vehicleType">Vehicle Type</label>
+                    <select class="form-control" id="field_vehicleType" name="vehicleType" [(ngModel)]="estimate.vehicleTypeId" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="vehicleTypeOption.id" *ngFor="let vehicleTypeOption of vehicletypes; trackBy: trackVehicleTypeById">{{vehicleTypeOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,10 +1,16 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
+import { LogValueRoadTypeModule } from './road-type/road-type.module';
+import { LogValueVehicleTypeModule } from './vehicle-type/vehicle-type.module';
+import { LogValueEstimateModule } from './estimate/estimate.module';
 /* jhipster-needle-add-entity-module-import - JHipster will add entity modules imports here */
 
 @NgModule({
     // prettier-ignore
     imports: [
+        LogValueRoadTypeModule,
+        LogValueVehicleTypeModule,
+        LogValueEstimateModule,
         /* jhipster-needle-add-entity-module - JHipster will add entity modules here */
     ],
     declarations: [],

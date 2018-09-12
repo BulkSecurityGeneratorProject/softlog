@@ -1,0 +1,28 @@
+
+{
+    "logValueApp": {
+        "estimate" : {
+            "home": {
+                "title": "Estimates",
+                "createLabel": "Create a new Estimate",
+                "createOrEditLabel": "Create or edit a Estimate"
+            },
+            "created": "A new Estimate is created with identifier {{ param }}",
+            "updated": "A Estimate is updated with identifier {{ param }}",
+            "deleted": "A Estimate is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Estimate {{ id }}?"
+            },
+            "detail": {
+                "title": "Estimate"
+            },
+            "pavedHighwayAmount": "Paved Highway Amount",
+            "nonPavedHighwayAmount": "Non Paved Highway Amount",
+            "containsToll": "Contains Toll",
+            "tollValue": "Toll Value",
+            "createdAt": "Created At",
+            "roadType": "Road Type",
+            "vehicleType": "Vehicle Type"
+        }
+    }
+}

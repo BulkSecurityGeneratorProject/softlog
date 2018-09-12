@@ -1,0 +1,68 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="logValueApp.vehicleType.home.title">Vehicle Types</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-vehicle-type" [routerLink]="['/vehicle-type/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="logValueApp.vehicleType.home.createLabel">
+            Create new Vehicle Type
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="vehicleTypes">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="name"><span jhiTranslate="logValueApp.vehicleType.name">Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="factor"><span jhiTranslate="logValueApp.vehicleType.factor">Factor</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="regularLoad"><span jhiTranslate="logValueApp.vehicleType.regularLoad">Regular Load</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="maximumLoad"><span jhiTranslate="logValueApp.vehicleType.maximumLoad">Maximum Load</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let vehicleType of vehicleTypes ;trackBy: trackId">
+                <td><a [routerLink]="['/vehicle-type', vehicleType.id, 'view' ]">{{vehicleType.id}}</a></td>
+                <td>{{vehicleType.name}}</td>
+                <td>{{vehicleType.factor}}</td>
+                <td>{{vehicleType.regularLoad}}</td>
+                <td>{{vehicleType.maximumLoad}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/vehicle-type', vehicleType.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/vehicle-type', vehicleType.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'vehicle-type/'+ vehicleType.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="vehicleTypes && vehicleTypes.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

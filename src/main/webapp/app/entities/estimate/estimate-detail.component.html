@@ -1,0 +1,55 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="estimate">
+            <h2><span jhiTranslate="logValueApp.estimate.detail.title">Estimate</span> {{estimate.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="logValueApp.estimate.pavedHighwayAmount">Paved Highway Amount</span></dt>
+                <dd>
+                    <span>{{estimate.pavedHighwayAmount}}</span>
+                </dd>
+                <dt><span jhiTranslate="logValueApp.estimate.nonPavedHighwayAmount">Non Paved Highway Amount</span></dt>
+                <dd>
+                    <span>{{estimate.nonPavedHighwayAmount}}</span>
+                </dd>
+                <dt><span jhiTranslate="logValueApp.estimate.containsToll">Contains Toll</span></dt>
+                <dd>
+                    <span>{{estimate.containsToll}}</span>
+                </dd>
+                <dt><span jhiTranslate="logValueApp.estimate.tollValue">Toll Value</span></dt>
+                <dd>
+                    <span>{{estimate.tollValue}}</span>
+                </dd>
+                <dt><span jhiTranslate="logValueApp.estimate.createdAt">Created At</span></dt>
+                <dd>
+                    <span>{{estimate.createdAt}}</span>
+                </dd>
+                <dt><span jhiTranslate="logValueApp.estimate.roadType">Road Type</span></dt>
+                <dd>
+                    <div *ngIf="estimate.roadTypeId">
+                        <a [routerLink]="['/road-type', estimate.roadTypeId, 'view']">{{estimate.roadTypeId}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="logValueApp.estimate.vehicleType">Vehicle Type</span></dt>
+                <dd>
+                    <div *ngIf="estimate.vehicleTypeId">
+                        <a [routerLink]="['/vehicle-type', estimate.vehicleTypeId, 'view']">{{estimate.vehicleTypeId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/estimate', estimate.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

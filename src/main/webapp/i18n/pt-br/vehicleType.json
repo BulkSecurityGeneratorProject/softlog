@@ -1,0 +1,25 @@
+
+{
+    "logValueApp": {
+        "vehicleType" : {
+            "home": {
+                "title": "Vehicle Types",
+                "createLabel": "Criar novo Vehicle Type",
+                "createOrEditLabel": "Criar ou editar Vehicle Type"
+            },
+            "created": "Um novo Vehicle Type foi criado com o identificador {{ param }}",
+            "updated": "Um Vehicle Type foi atualizado com o identificador {{ param }}",
+            "deleted": "Um Vehicle Type foi deletado com o identificador {{ param }}",
+            "delete": {
+                "question": "Tem certeza de que deseja excluir Vehicle Type {{ id }}?"
+            },
+            "detail": {
+                "title": "Vehicle Type"
+            },
+            "name": "Name",
+            "factor": "Factor",
+            "regularLoad": "Regular Load",
+            "maximumLoad": "Maximum Load"
+        }
+    }
+}
