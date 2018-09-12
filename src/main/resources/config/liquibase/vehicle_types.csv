@@ -1,0 +1,5 @@
+id;name;factor;regular_load;maximum_load
+1;Caminhão Baú;1.00;5;14
+2;Caminhão Caçamba;1.05;5;28
+3;Carreta;1.12;5;42
+
