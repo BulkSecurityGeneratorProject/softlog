@@ -56,6 +56,9 @@ Isso não será necessário caso o front-end seja inicado com o yarn. Utilizando
 
 
 
+ ### Problemas com node-sass [BUG]
+
+
 [Yarn][] is also used to manage CSS and JavaScript dependencies used in this application. You can upgrade dependencies by
 specifying a newer version in [package.json](package.json). You can also run `yarn update` and `yarn install` to manage dependencies.
 Add the `help` flag on any command to see how you can use it. For example, `yarn help update`.
@@ -203,3 +206,12 @@ To configure CI for your project, run the ci-cd sub-generator (`jhipster ci-cd`)
 [Protractor]: https://angular.github.io/protractor/
 [Leaflet]: http://leafletjs.com/
 [DefinitelyTyped]: http://definitelytyped.org/
+
+
+
+
+## Resolucao de Problemas
+
+### node-sass
+ https://github.com/sass/node-sass/issues/2032
+ https://github.com/sass/node-sass/issues/1918

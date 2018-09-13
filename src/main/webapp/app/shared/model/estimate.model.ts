@@ -8,8 +8,9 @@ export interface IEstimate {
     containsToll?: boolean;
     tollValue?: number;
     createdAt?: Moment;
-    roadTypeId?: number;
     vehicleTypeId?: number;
+    ownerId?: Number;
+    ownerName?: string;
 }
 
 export class Estimate implements IEstimate {
@@ -21,8 +22,9 @@ export class Estimate implements IEstimate {
         public containsToll?: boolean,
         public tollValue?: number,
         public createdAt?: Moment,
-        public roadTypeId?: number,
-        public vehicleTypeId?: number
+        public vehicleTypeId?: number,
+        public ownerId?: Number,
+        public ownerName?: string
     ) {
         this.containsToll = false;
     }

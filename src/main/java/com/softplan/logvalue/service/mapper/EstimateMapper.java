@@ -11,15 +11,12 @@ import org.mapstruct.*;
 @Mapper(componentModel = "spring", uses = {RoadTypeMapper.class, VehicleTypeMapper.class})
 public interface EstimateMapper extends EntityMapper<EstimateDTO, Estimate> {
 
-    @Mapping(source = "roadType.id", target = "roadTypeId")
     @Mapping(source = "vehicleType.id", target = "vehicleTypeId")
     @Mapping(source = "owner.id", target = "ownerId")
     @Mapping(source = "owner.firstName", target = "ownerName")
     EstimateDTO toDto(Estimate estimate);
 
-    @Mapping(source = "roadTypeId", target = "roadType")
     @Mapping(source = "vehicleTypeId", target = "vehicleType")
-    // @Mapping(source = "ownerId", target = "owner")
     Estimate toEntity(EstimateDTO estimateDTO);
 
     default Estimate fromId(Long id) {

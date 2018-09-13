@@ -65,11 +65,9 @@ public class EstimateResourceIntTest {
     @Autowired
     private EstimateRepository estimateRepository;
 
-
     @Autowired
     private EstimateMapper estimateMapper;
     
-
     @Autowired
     private EstimateService estimateService;
 

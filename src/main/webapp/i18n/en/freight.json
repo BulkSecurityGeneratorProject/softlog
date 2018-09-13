@@ -16,9 +16,12 @@
             "detail": {
                 "title": "Estimate"
             },
-            "pavedHighwayAmount": "Paved Highway Amount",
-            "nonPavedHighwayAmount": "Non Paved Highway Amount",
-            "loadAmount": "Load Amount",
+            "messages": {
+                "freightValue": "Your freight will only cost R$ {{freightCost}} reais."
+            },
+            "pavedHighwayAmount": "Paved Highway Amount (KM)",
+            "nonPavedHighwayAmount": "Non Paved Highway Amount (KM)",
+            "loadAmount": "Load Amount (Ton)",
             "containsToll": "Contains Toll",
             "tollValue": "Toll Value",
             "createdAt": "Created At",

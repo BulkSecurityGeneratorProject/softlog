@@ -101,7 +101,8 @@
             "edit": "Editar",
             "open": "Open",
             "save": "Salvar",
-            "view": "Visualizar"
+            "view": "Visualizar",
+            "calc": "Calcular"
         },
         "detail": {
             "field": "Campo",
@@ -132,7 +133,13 @@
         "userexists": "Usuário já existente!",
         "emailexists": "Este email já está cadastrado!",
         "idexists": "Novo(a) {{entityName}} não pode ter uma ID",
-        "idnull": "Invalid ID"
+        "idnull": "Invalid ID",
+        "vehicletypeid": "The Vehicle Type is null {{params}}",
+        "distanceamount": "The Highway Amount is null",
+        "distanceamountInvalid": "The Highway Amount is invalid",
+        "loadamount": "The Load Amount is null",
+        "vehicletypeidInvalid": "The Vehicle Type is invalid",
+        "vehicletypeoverload": "Vehicle Overload"
     },
     "footer": "Este é o seu rodapé"
 }

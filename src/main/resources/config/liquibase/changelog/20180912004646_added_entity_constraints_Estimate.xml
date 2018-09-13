@@ -8,12 +8,7 @@
     -->
     <changeSet id="20180912004646-2" author="jhipster">
         
-        <addForeignKeyConstraint baseColumnNames="road_type_id"
-                                 baseTableName="estimate"
-                                 constraintName="fk_estimate_road_type_id"
-                                 referencedColumnNames="id"
-                                 referencedTableName="road_type"/>
-
+        
         <addForeignKeyConstraint baseColumnNames="vehicle_type_id"
                                  baseTableName="estimate"
                                  constraintName="fk_estimate_vehicle_type_id"

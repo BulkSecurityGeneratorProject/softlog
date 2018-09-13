@@ -49,10 +49,10 @@ public class Estimate implements Serializable {
     @Column(name = "created_at")
     private ZonedDateTime createdAt;
 
-    @NotNull
-    @ManyToOne
-    @JsonIgnoreProperties("")
-    private RoadType roadType;
+    // @NotNull
+    // @ManyToOne
+    // @JsonIgnoreProperties("")
+    // private RoadType roadType;
 
     @NotNull
     @ManyToOne
@@ -64,6 +64,10 @@ public class Estimate implements Serializable {
     @ManyToOne
     @JsonIgnoreProperties("")
     private User owner;
+
+    @NotNull
+    @Column(name = "freight_amount")
+    private Float freightAmount;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -139,18 +143,18 @@ public class Estimate implements Serializable {
         this.createdAt = createdAt;
     }
 
-    public RoadType getRoadType() {
-        return roadType;
-    }
+    // public RoadType getRoadType() {
+    //     return roadType;
+    // }
 
-    public Estimate roadType(RoadType roadType) {
-        this.roadType = roadType;
-        return this;
-    }
+    // public Estimate roadType(RoadType roadType) {
+    //     this.roadType = roadType;
+    //     return this;
+    // }
 
-    public void setRoadType(RoadType roadType) {
-        this.roadType = roadType;
-    }
+    // public void setRoadType(RoadType roadType) {
+    //     this.roadType = roadType;
+    // }
 
     public VehicleType getVehicleType() {
         return vehicleType;
@@ -191,6 +195,20 @@ public class Estimate implements Serializable {
      */
     public void setOwner(User owner) {
         this.owner = owner;
+    }
+
+    /**
+     * @return the freightAmount
+     */
+    public Float getFreightAmount() {
+        return freightAmount;
+    }
+
+    /**
+     * @param freightAmount the freightAmount to set
+     */
+    public void setFreightAmount(Float freightAmount) {
+        this.freightAmount = freightAmount;
     }
 
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove

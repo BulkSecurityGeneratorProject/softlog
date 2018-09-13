@@ -45,15 +45,15 @@
                 <constraints nullable="false" />
             </column>
 
-            <column name="road_type_id" type="bigint">
-                <constraints nullable="false" />
-            </column>
-
             <column name="vehicle_type_id" type="bigint">
                 <constraints nullable="false" />
             </column>
 
             <column name="owner_id" type="bigint">
+                <constraints nullable="false" />
+            </column>
+
+             <column name="freight_amount" type="${floatType}">
                 <constraints nullable="false" />
             </column>
 

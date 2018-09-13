@@ -65,6 +65,11 @@ export class FreightComponent implements OnInit {
     save() {
         this.isSaving = true;
         this.estimate.createdAt = moment(this.createdAt, DATE_TIME_FORMAT);
+
+        if (this.vehicletypesSelected) {
+            this.estimate.vehicleTypeId = this.vehicletypesSelected.id;
+        }
+
         if (this.estimate.id !== undefined) {
             this.subscribeToSaveResponse(this.estimateService.update(this.estimate));
         } else {
@@ -73,12 +78,15 @@ export class FreightComponent implements OnInit {
     }
 
     private subscribeToSaveResponse(result: Observable<HttpResponse<IEstimate>>) {
-        result.subscribe((res: HttpResponse<IEstimate>) => this.onSaveSuccess(), (res: HttpErrorResponse) => this.onSaveError());
+        result.subscribe((res: HttpResponse<IEstimate>) => this.onSaveSuccess(res), (res: HttpErrorResponse) => this.onSaveError());
     }
 
-    private onSaveSuccess() {
+    private onSaveSuccess(res: HttpResponse<IEstimate>) {
         this.isSaving = false;
-        this.previousState();
+
+        this.estimate = res.body;
+
+        // this.previousState();
     }
 
     private onSaveError() {

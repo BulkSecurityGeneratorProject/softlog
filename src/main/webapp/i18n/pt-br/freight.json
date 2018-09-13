@@ -16,9 +16,12 @@
             "detail": {
                 "title": "Cotação"
             },
-            "pavedHighwayAmount": "Total de Via Pavimentada",
-            "nonPavedHighwayAmount": "Total de Via Não Pavimentada",
-            "loadAmount": "Total de Carga",
+            "messages": {
+                "freightValue": "Seu frete custará apenas R$ {{freightCost}} reais."
+            },
+            "pavedHighwayAmount": "Total de Via Pavimentada (KM)",
+            "nonPavedHighwayAmount": "Total de Via Não Pavimentada (KM)",
+            "loadAmount": "Total de Carga (Ton)",
             "containsToll": "O Trecho contém Pedágio ?",
             "tollValue": "Valor do Pedágio",
             "createdAt": "Criado em",

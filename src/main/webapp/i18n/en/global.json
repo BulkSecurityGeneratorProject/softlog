@@ -84,7 +84,7 @@
             }
         },
         "field": {
-            "id": "ID"
+            "id": "Identifier"
         },
         "ribbon": {
             "dev":"Development"
@@ -101,7 +101,8 @@
             "edit": "Edit",
             "open": "Open",
             "save": "Save",
-            "view": "View"
+            "view": "View",
+            "calc": "Calculate"
         },
         "detail": {
             "field": "Field",
@@ -133,7 +134,14 @@
         "userexists": "Login name already used!",
         "emailexists": "Email is already in use!",
         "idexists": "A new {{ entityName }} cannot already have an ID",
-        "idnull": "Invalid ID"
+        "idnull": "Invalid ID",
+        "vehicletypeid": "The Vehicle Type is null",
+        "distanceamount": "The Highway Amount is null",
+        "distanceamountInvalid": "The Highway Amount is invalid",
+        "loadamount": "The Load Amount is null",
+        "vehicletypeidInvalid": "The Vehicle Type is invalid",
+        "vehicletypeoverload": "Vehicle Overload"
+        
     },
     "footer": "This is your footer"
 }

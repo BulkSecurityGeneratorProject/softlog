@@ -4,6 +4,8 @@ import java.time.ZonedDateTime;
 import java.io.Serializable;
 import java.util.Objects;
 
+import javax.validation.constraints.NotNull;
+
 import lombok.Data;
 
 /**
@@ -13,25 +15,28 @@ public class EstimateDTO implements Serializable {
 
     private Long id;
 
-    private Integer pavedHighwayAmount;
+    private Integer pavedHighwayAmount = 0;
 
-    private Integer nonPavedHighwayAmount;
+    private Integer nonPavedHighwayAmount = 0;
 
+    @NotNull
     private Integer loadAmount;
 
-    private Boolean containsToll;
+    private Boolean containsToll = false;
 
     private Float tollValue;
 
     private ZonedDateTime createdAt;
 
-    private Long roadTypeId;
+    // private Long roadTypeId;
 
     private Long vehicleTypeId;
 
     private Long ownerId;
 
     private String ownerName;
+
+    private Float freightAmount;
 
     public Long getId() {
         return id;
@@ -81,13 +86,13 @@ public class EstimateDTO implements Serializable {
         this.createdAt = createdAt;
     }
 
-    public Long getRoadTypeId() {
-        return roadTypeId;
-    }
+    // public Long getRoadTypeId() {
+    //     return roadTypeId;
+    // }
 
-    public void setRoadTypeId(Long roadTypeId) {
-        this.roadTypeId = roadTypeId;
-    }
+    // public void setRoadTypeId(Long roadTypeId) {
+    //     this.roadTypeId = roadTypeId;
+    // }
 
     public Long getVehicleTypeId() {
         return vehicleTypeId;
@@ -139,6 +144,20 @@ public class EstimateDTO implements Serializable {
         this.ownerName = ownerName;
     }
 
+    /**
+     * @return the freightAmount
+     */
+    public Float getFreightAmount() {
+        return freightAmount;
+    }
+
+    /**
+     * @param freightAmount the freightAmount to set
+     */
+    public void setFreightAmount(Float freightAmount) {
+        this.freightAmount = freightAmount;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -169,7 +188,7 @@ public class EstimateDTO implements Serializable {
             ", containsToll='" + isContainsToll() + "'" +
             ", tollValue=" + getTollValue() +
             ", createdAt='" + getCreatedAt() + "'" +
-            ", roadType=" + getRoadTypeId() +
+            // ", roadType=" + getRoadTypeId() +
             ", vehicleType=" + getVehicleTypeId() +
             "}";
     }
