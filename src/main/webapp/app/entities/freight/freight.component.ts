@@ -18,13 +18,15 @@ import { VehicleTypeService } from 'app/entities/vehicle-type';
     templateUrl: './freight.component.html'
 })
 export class FreightComponent implements OnInit {
-    
     private _estimate: IEstimate;
     isSaving: boolean;
 
     roadtypes: IRoadType[];
+    roadtypesSelected: IRoadType[];
 
     vehicletypes: IVehicleType[];
+    vehicletypesSelected: IVehicleType;
+
     createdAt: string;
 
     constructor(

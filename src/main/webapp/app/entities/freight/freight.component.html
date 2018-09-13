@@ -11,6 +11,42 @@
                 </div>
 
                 <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="logValueApp.freight.vehicleType" for="field_vehicleType">Vehicle Type</label>
+                    
+                    <p-selectButton id="field_vehicleType" name="vehicleType" optionLabel="name"
+                                    [options]="vehicletypes" [(ngModel)]="vehicletypesSelected">
+                    </p-selectButton>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="logValueApp.freight.roadType" for="field_roadType">Road Type</label>
+                    <p-selectButton [options]="roadtypes" [(ngModel)]="roadtypesSelected" multiple="multiple">
+                        <ng-template let-item>
+                            <div style="padding: .5em 1em">
+                                <img style="vertical-align: middle; margin-right: .5em" 
+                                     src="../../../content/images/road/1.png" height="20px"/>
+                                <span>{{item.name}}</span>
+                            </div>
+                        </ng-template>
+                    </p-selectButton>
+                </div>
+
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="logValueApp.freight.pavedHighwayAmount" for="field_pavedHighwayAmount">Paved Highway Amount</label>
+                    <input type="number" class="form-control" name="pavedHighwayAmount" id="field_pavedHighwayAmount"
+                           [(ngModel)]="estimate.pavedHighwayAmount" ng-pattern="[0-9]+$" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="logValueApp.freight.nonPavedHighwayAmount" for="field_nonPavedHighwayAmount">Non Paved Highway Amount</label>
+                    <input type="number" class="form-control" name="nonPavedHighwayAmount" id="field_nonPavedHighwayAmount"
+                        [(ngModel)]="estimate.nonPavedHighwayAmount" ng-pattern="/^(0|\-?[1-9][0-9]*)$/"/>
+                </div>
+
+<hr>
+
+
+                <!-- <div class="form-group">
                     <label class="form-control-label" jhiTranslate="logValueApp.freight.roadType" for="field_roadType">Road Type</label>
                     <select class="form-control" id="field_roadType" name="roadType" [(ngModel)]="estimate.roadTypeId" >
                         <option [ngValue]="null"></option>
@@ -23,7 +59,7 @@
                         <option [ngValue]="null"></option>
                         <option [ngValue]="vehicleTypeOption.id" *ngFor="let vehicleTypeOption of vehicletypes; trackBy: trackVehicleTypeById">{{vehicleTypeOption.name}}</option>
                     </select>
-                </div>
+                </div> -->
 
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="logValueApp.freight.loadAmount" for="field_loadAmount">Load Amount</label>
@@ -31,29 +67,20 @@
                             [(ngModel)]="estimate.loadAmount" ng-pattern="[0-9]+$" />
                 </div>
 
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="logValueApp.freight.pavedHighwayAmount" for="field_pavedHighwayAmount">Paved Highway Amount</label>
-                    <input type="number" class="form-control" name="pavedHighwayAmount" id="field_pavedHighwayAmount"
-                           [(ngModel)]="estimate.pavedHighwayAmount" ng-pattern="[0-9]+$" />
-                </div>
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="logValueApp.freight.nonPavedHighwayAmount" for="field_nonPavedHighwayAmount">Non Paved Highway Amount</label>
-                    <input type="number" class="form-control" name="nonPavedHighwayAmount" id="field_nonPavedHighwayAmount"
-                        [(ngModel)]="estimate.nonPavedHighwayAmount" ng-pattern="/^(0|\-?[1-9][0-9]*)$/"/>
-                </div>
+               
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="logValueApp.freight.containsToll" for="field_containsToll">Contains Toll</label>
-                    <input type="checkbox" class="form-control" name="containsToll" id="field_containsToll"
-                        [(ngModel)]="estimate.containsToll" />
+                    <!-- <input type="checkbox" class="form-control" name="containsToll" id="field_containsToll"
+                        [(ngModel)]="estimate.containsToll" /> -->
+                        
+                    <p-toggleButton name="containsToll" id="field_containsToll" [(ngModel)]="estimate.containsToll"></p-toggleButton>
                 </div>
                 <div class="form-group" [hidden]="!estimate.containsToll">
                     <label class="form-control-label" jhiTranslate="logValueApp.freight.tollValue" for="field_tollValue">Toll Value</label>
                     <input type="number" class="form-control" name="tollValue" id="field_tollValue"
                         [(ngModel)]="estimate.tollValue" />
                 </div>
-               
-
-               
+                              
             </div>
             <div>
                 <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
