@@ -53,7 +53,7 @@
                 "authenticated": {
                     "prefix": "Para ",
                     "link": "entrar",
-                    "suffix": ", utilize as seguintes contas padrões:<br/>- Administrador (usuário=\"admin\" and senha=\"admin\") <br/>- Usuário (usuário=\"user\" and senha=\"user\")."
+                    "suffix": ", utilize as seguintes contas padrões:<br/>- Administrador<br/> <span style=\"padding-left: 0.4em;\"> (usuário=\"admin\" and senha=\"admin\") </span> <br/>- Usuário <br/> <span style=\"padding-left: 0.4em;\">(usuário=\"user\" and senha=\"user\")</span>."
                 },
                 "register": {
                     "noaccount": "Não possui uma conta ainda?",

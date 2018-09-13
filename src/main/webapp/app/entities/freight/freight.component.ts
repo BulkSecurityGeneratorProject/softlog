@@ -35,7 +35,9 @@ export class FreightComponent implements OnInit {
         private roadTypeService: RoadTypeService,
         private vehicleTypeService: VehicleTypeService,
         private activatedRoute: ActivatedRoute
-    ) {}
+    ) {
+        this.roadtypesSelected = [];
+    }
 
     ngOnInit() {
         this.isSaving = false;
@@ -101,5 +103,19 @@ export class FreightComponent implements OnInit {
     set estimate(estimate: IEstimate) {
         this._estimate = estimate;
         this.createdAt = moment(estimate.createdAt).format(DATE_TIME_FORMAT);
+    }
+
+    isPavedRoadChecked(): Boolean {
+        if (this.roadtypesSelected) {
+            return this.roadtypesSelected.find(e => e.id === 1) != null;
+        }
+        return false;
+    }
+
+    isNonPavedRoadChecked(): Boolean {
+        if (this.roadtypesSelected) {
+            return this.roadtypesSelected.find(e => e.id === 2) != null;
+        }
+        return false;
     }
 }
