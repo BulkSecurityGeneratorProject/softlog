@@ -1,11 +1,11 @@
 
 {
     "logValueApp": {
-        "estimate" : {
+        "freight" : {
             "home": {
-                "title": "Cotações",
+                "title": "Fretes",
                 "createLabel": "Criar nova Cotação",
-                "createOrEditLabel": "Criar ou editar Cotação"
+                "createOrEditLabel": "Consulte seu frete"
             },
             "created": "Uma nova Cotação foi criada com o identificador {{ param }}",
             "updated": "Uma Cotação foi atualizada com o identificador {{ param }}",
