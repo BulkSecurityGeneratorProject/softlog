@@ -22,7 +22,7 @@
             "pavedHighwayAmount": "Total de Via Pavimentada (KM)",
             "nonPavedHighwayAmount": "Total de Via Não Pavimentada (KM)",
             "loadAmount": "Total de Carga (Ton)",
-            "containsToll": "O Trecho contém Pedágio ?",
+            "containsToll": "O Trecho Contém Pedágio ?",
             "tollValue": "Valor do Pedágio",
             "createdAt": "Criado em",
             "roadType": "Tipo de Rodovia",

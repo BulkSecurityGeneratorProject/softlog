@@ -4,6 +4,7 @@ import { LogValueRoadTypeModule } from './road-type/road-type.module';
 import { LogValueVehicleTypeModule } from './vehicle-type/vehicle-type.module';
 import { LogValueEstimateModule } from './estimate/estimate.module';
 import { LogValueFreightModule } from './freight/freight.module';
+
 /* jhipster-needle-add-entity-module-import - JHipster will add entity modules imports here */
 
 @NgModule({
@@ -12,7 +13,7 @@ import { LogValueFreightModule } from './freight/freight.module';
         LogValueRoadTypeModule,
         LogValueVehicleTypeModule,
         LogValueEstimateModule,
-        LogValueFreightModule
+        LogValueFreightModule,
         /* jhipster-needle-add-entity-module - JHipster will add entity modules here */
     ],
     declarations: [],

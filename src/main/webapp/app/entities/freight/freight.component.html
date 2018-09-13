@@ -37,17 +37,17 @@
                 <div class="form-group">
                     <div class="row justify-content-center">
                         <div class="col-6">
-                            <div class="form-group" *ngIf="isPavedRoadChecked()">
+                            <div  *ngIf="isPavedRoadChecked()">
                                 <label class="form-control-label" jhiTranslate="logValueApp.freight.pavedHighwayAmount" for="field_pavedHighwayAmount">Paved Highway Amount</label>
-                                <input type="number" class="form-control" name="pavedHighwayAmount" id="field_pavedHighwayAmount"
-                                       [(ngModel)]="estimate.pavedHighwayAmount" ng-pattern="[0-9]+$" />
+                                <input type="text" class="form-control" name="pavedHighwayAmount" id="field_pavedHighwayAmount"
+                                       [(ngModel)]="estimate.pavedHighwayAmount" mask="0*" />
                             </div>
                         </div>
                         <div class="col-6">
-                            <div class="form-group" *ngIf="isNonPavedRoadChecked()">
+                            <div  *ngIf="isNonPavedRoadChecked()">
                                 <label class="form-control-label" jhiTranslate="logValueApp.freight.nonPavedHighwayAmount" for="field_nonPavedHighwayAmount">Non Paved Highway Amount</label>
-                                <input type="number" class="form-control" name="nonPavedHighwayAmount" id="field_nonPavedHighwayAmount"
-                                    [(ngModel)]="estimate.nonPavedHighwayAmount" ng-pattern="/^(0|\-?[1-9][0-9]*)$/"/>
+                                <input type="text" class="form-control" name="nonPavedHighwayAmount" id="field_nonPavedHighwayAmount"
+                                    [(ngModel)]="estimate.nonPavedHighwayAmount" mask="0*"/>
                             </div>
                         </div>
                     </div>
@@ -60,8 +60,8 @@
                         Load Amount
                     </label>
                     <div class="col-md-9">
-                        <input type="number" class="form-control" name="loadAmount" id="field_loadAmount"
-                                [(ngModel)]="estimate.loadAmount" ng-pattern="[0-9]+$" />
+                        <input type="text" class="form-control" name="loadAmount" id="field_loadAmount"
+                                [(ngModel)]="estimate.loadAmount" mask="0*" />
                     </div>
                 </div>
 
@@ -73,8 +73,8 @@
                 <div class="form-group row" [hidden]="!estimate.containsToll">
                     <label class="form-control-label" jhiTranslate="logValueApp.freight.tollValue" for="field_tollValue" class="col-md-3 col-form-label">Toll Value</label>
                     <div class="col-md-9">
-                        <input type="number" class="form-control" name="tollValue" id="field_tollValue"
-                            [(ngModel)]="estimate.tollValue" />
+                        <input type="text" class="form-control" name="tollValue" id="field_tollValue"
+                            [(ngModel)]="estimate.tollValue" currencyMask/>
                     </div>
                 </div>
 
@@ -91,7 +91,7 @@
             </div>
                               
             <div>
-                <button type="submit" id="calc-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-success">
+                <button type="submit" id="calc-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
                     <fa-icon [icon]="'eye'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.calc">Calculate</span>
                 </button>
                 <!-- <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
