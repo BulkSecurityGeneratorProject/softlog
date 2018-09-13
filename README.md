@@ -1,6 +1,26 @@
 # LogValue
 This application was generated using JHipster 5.1.0, you can find documentation and help at [https://www.jhipster.tech/documentation-archive/v5.1.0](https://www.jhipster.tech/documentation-archive/v5.1.0).
 
+
+## Live Demo
+
+Quer ver a aplicação agora ? Ela está disponível no seguinte endereço:
+
+    `https`
+
+Só um detalhe: como os Dynos do Heroku gostão de dormir no meio do expediente, caso a aplicação demore para responder, calma, 
+os Dynos já acordarão rapidinho e a aplicação funcionará normalmente. 
+
+## Requisitos 
+Esta aplicação foi homologada com o seguinte ambiente:
+ 
+ - Java 8
+ - [Maven 3.5.0](https://maven.apache.org/download.cgi)
+ - [NodeJs 8.11.3](https://nodejs.org/en/) (não funcionará com o NodeJs 10.x)
+ - [Yarn 1.9.4](https://yarnpkg.com/lang/en/docs/install/#debian-stable)
+ 
+ Estes são requisitos obrigatórios, mas o Docker também poderá ser utilizado, opcionalmente. 
+
 ## Development
 
 Before you can build this project, you must install and configure the following dependencies on your machine:
@@ -22,6 +42,19 @@ auto-refreshes when files change on your hard drive.
 
     ./mvnw
     yarn start
+
+Após o comando `./mvnw`, a view será exibiba no endereço `http://localhost:8080`, contudo, logo após o clone do projeto ou após um `clean` ser executado, 
+o webpack precisa construir algumas estrututas da visão que são utilizadas para desenvolvimento, livereload etc. Para isso, utilize o seguinte comando 
+para iniciar o back-end da aplicação:
+
+	./mvnw -P webpack
+
+As demais vezes em que o back-end for iniciado, não será mais necessário utilizar esse profile específico. 
+
+Isso não será necessário caso o front-end seja inicado com o yarn. Utilizando o comando `yarn start` para iniciar o front-end, a view será exibida no endereço 
+`http://localhost:9000`. Esta é a opção correta para desenvolvimento
+
+
 
 [Yarn][] is also used to manage CSS and JavaScript dependencies used in this application. You can upgrade dependencies by
 specifying a newer version in [package.json](package.json). You can also run `yarn update` and `yarn install` to manage dependencies.
