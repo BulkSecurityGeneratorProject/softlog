@@ -1,29 +1,29 @@
 
 {
     "logValueApp": {
-        "estimate" : {
+        "Cotação" : {
             "home": {
-                "title": "Estimates",
-                "createLabel": "Criar novo Estimate",
-                "createOrEditLabel": "Criar ou editar Estimate"
+                "title": "Cotações",
+                "createLabel": "Criar nova Cotação",
+                "createOrEditLabel": "Criar ou editar Cotação"
             },
-            "created": "Um novo Estimate foi criado com o identificador {{ param }}",
-            "updated": "Um Estimate foi atualizado com o identificador {{ param }}",
-            "deleted": "Um Estimate foi deletado com o identificador {{ param }}",
+            "created": "Uma nova Cotação foi criada com o identificador {{ param }}",
+            "updated": "Uma Cotação foi atualizada com o identificador {{ param }}",
+            "deleted": "Uma Cotação foi deletada com o identificador {{ param }}",
             "delete": {
-                "question": "Tem certeza de que deseja excluir Estimate {{ id }}?"
+                "question": "Tem certeza de que deseja excluir a Cotação {{ id }}?"
             },
             "detail": {
-                "title": "Estimate"
+                "title": "Cotação"
             },
-            "pavedHighwayAmount": "Paved Highway Amount",
-            "nonPavedHighwayAmount": "Non Paved Highway Amount",
-            "loadAmount": "Load Amount",
-            "containsToll": "Contains Toll",
-            "tollValue": "Toll Value",
-            "createdAt": "Created At",
-            "roadType": "Road Type",
-            "vehicleType": "Vehicle Type"
+            "pavedHighwayAmount": "Total de Via Pavimentada",
+            "nonPavedHighwayAmount": "Total de Via Não Pavimentada",
+            "loadAmount": "Total de Carga",
+            "containsToll": "O Trecho contém Pedágio ?",
+            "tollValue": "Valor do Pedágio",
+            "createdAt": "Criado em",
+            "roadType": "Tipo de Rodovia",
+            "vehicleType": "Tipo de Veículo"
         }
     }
 }

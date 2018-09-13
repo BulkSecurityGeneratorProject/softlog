@@ -10,6 +10,46 @@ Main page styles
     background-size: contain;
 }
 
+%base-social-icon {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+}
+
+.softplan-icon {
+    @extend %base-social-icon;
+    background: url('../../content/images/softplan-icon-small.png') no-repeat center top;
+    background-size: contain;
+}
+
+.twitter-icon {
+    @extend %base-social-icon;
+    background: url('../../content/images/twitter_icon.png') no-repeat center top;
+    background-size: contain;
+}
+
+.facebook-icon {
+    @extend %base-social-icon;
+    background: url('../../content/images/facebook_icon.png') no-repeat center top;
+    background-size: contain;
+}
+
+.google-icon {
+    @extend %base-social-icon;
+    background: url('../../content/images/google_icon.png') no-repeat center top;
+    background-size: contain;
+}
+
+.linkedin-icon {
+    @extend %base-social-icon;
+    background: url('../../content/images/linkedin_icon.png') no-repeat center top;
+    background-size: contain;
+}
+
+.home-box {
+    padding: 0.75rem 1.25rem;
+}
+
 /* wait autoprefixer update to allow simple generation of high pixel density media query */
 @media only screen and (-webkit-min-device-pixel-ratio: 2),
     only screen and (min--moz-device-pixel-ratio: 2),

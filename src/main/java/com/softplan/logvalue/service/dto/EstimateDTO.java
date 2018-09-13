@@ -4,6 +4,8 @@ import java.time.ZonedDateTime;
 import java.io.Serializable;
 import java.util.Objects;
 
+import lombok.Data;
+
 /**
  * A DTO for the Estimate entity.
  */
