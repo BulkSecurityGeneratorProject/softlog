@@ -85,7 +85,7 @@
                 <span jhiTranslate="logValueApp.freight.messages.freightValue"
                     translateValues="{freightCost: '{{estimate.freightAmount}}'}"> 
                     
-                    Your freight will only cost R$ {{estimate.freightAmount}}
+                    Your freight will only cost R$ {{estimate.freightAmount | currency:'BRL':true}}}
                 </span>
 
             </div>

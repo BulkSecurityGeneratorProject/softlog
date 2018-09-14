@@ -1,6 +1,6 @@
 {
     "home": {
-        "title": "Welcome to LogValue!",
+        "title": "Welcome to SoftLog!",
         "subtitle": "Your tool for freight calculations",
         "logged": {
             "message": "You are logged in as user \"{{username}}\"."
