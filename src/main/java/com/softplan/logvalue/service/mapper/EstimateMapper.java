@@ -12,6 +12,7 @@ import org.mapstruct.*;
 public interface EstimateMapper extends EntityMapper<EstimateDTO, Estimate> {
 
     @Mapping(source = "vehicleType.id", target = "vehicleTypeId")
+    @Mapping(source = "vehicleType.name", target = "vehicleTypeName")
     @Mapping(source = "owner.id", target = "ownerId")
     @Mapping(source = "owner.firstName", target = "ownerName")
     EstimateDTO toDto(Estimate estimate);

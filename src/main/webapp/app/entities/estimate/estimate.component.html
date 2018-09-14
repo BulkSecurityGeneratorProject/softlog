@@ -1,7 +1,7 @@
 <div>
     <h2 id="page-heading">
         <span jhiTranslate="logValueApp.estimate.home.title">Estimates</span>
-        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-estimate" [routerLink]="['/freight/new']">
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-estimate" [routerLink]="['/estimate/new']">
             <fa-icon [icon]="'plus'"></fa-icon>
             <span  jhiTranslate="logValueApp.estimate.home.createLabel">
             Create new Estimate
@@ -29,7 +29,7 @@
                 <td>{{estimate.nonPavedHighwayAmount}}</td>
                 <td>
                     <div *ngIf="estimate.vehicleTypeId">
-                        <a [routerLink]="['../vehicle-type', estimate.vehicleTypeId , 'view' ]" >{{estimate.vehicleTypeId}}</a>
+                        <a [routerLink]="['../vehicle-type', estimate.vehicleTypeId , 'view' ]" >{{estimate.vehicleTypeName}}</a>
                     </div>
                 </td>
                 <td>{{estimate.createdAt | date:'medium'}}</td>

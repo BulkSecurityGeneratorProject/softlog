@@ -30,6 +30,8 @@ public class EstimateDTO implements Serializable {
 
     private Long vehicleTypeId;
 
+    private String vehicleTypeName;
+
     private Long ownerId;
 
     private String ownerName;
@@ -146,6 +148,20 @@ public class EstimateDTO implements Serializable {
      */
     public void setFreightAmount(Float freightAmount) {
         this.freightAmount = freightAmount;
+    }
+
+    /**
+     * @return the vehicleTypeName
+     */
+    public String getVehicleTypeName() {
+        return vehicleTypeName;
+    }
+
+    /**
+     * @param vehicleTypeName the vehicleTypeName to set
+     */
+    public void setVehicleTypeName(String vehicleTypeName) {
+        this.vehicleTypeName = vehicleTypeName;
     }
 
     @Override

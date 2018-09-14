@@ -39,14 +39,14 @@
                         <div class="col-6">
                             <div  *ngIf="isPavedRoadChecked()">
                                 <label class="form-control-label" jhiTranslate="logValueApp.freight.pavedHighwayAmount" for="field_pavedHighwayAmount">Paved Highway Amount</label>
-                                <input type="text" class="form-control" name="pavedHighwayAmount" id="field_pavedHighwayAmount"
+                                <input type="number" class="form-control" name="pavedHighwayAmount" id="field_pavedHighwayAmount"
                                        [(ngModel)]="estimate.pavedHighwayAmount" mask="0*" />
                             </div>
                         </div>
                         <div class="col-6">
                             <div  *ngIf="isNonPavedRoadChecked()">
                                 <label class="form-control-label" jhiTranslate="logValueApp.freight.nonPavedHighwayAmount" for="field_nonPavedHighwayAmount">Non Paved Highway Amount</label>
-                                <input type="text" class="form-control" name="nonPavedHighwayAmount" id="field_nonPavedHighwayAmount"
+                                <input type="number" class="form-control" name="nonPavedHighwayAmount" id="field_nonPavedHighwayAmount"
                                     [(ngModel)]="estimate.nonPavedHighwayAmount" mask="0*"/>
                             </div>
                         </div>
@@ -60,7 +60,7 @@
                         Load Amount
                     </label>
                     <div class="col-md-9">
-                        <input type="text" class="form-control" name="loadAmount" id="field_loadAmount"
+                        <input type="number" class="form-control" name="loadAmount" id="field_loadAmount"
                                 [(ngModel)]="estimate.loadAmount" mask="0*" />
                     </div>
                 </div>
@@ -91,14 +91,11 @@
             </div>
                               
             <div>
-                <button type="submit" id="calc-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
-                    <fa-icon [icon]="'eye'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.calc">Calculate</span>
-                </button>
-                <!-- <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
-                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
-                </button> -->
                 <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
                     <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="calc-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'eye'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.calc">Calculate</span>
                 </button>
             </div>
         </form>

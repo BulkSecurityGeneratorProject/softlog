@@ -1,7 +1,7 @@
 <div class="row justify-content-center">
     <div class="col-8">
         <div *ngIf="estimate">
-            <h2><span jhiTranslate="logValueApp.estimate.detail.title">Estimate</span> {{estimate.id}}</h2>
+            <h2><span jhiTranslate="logValueApp.estimate.detail.title">Estimate</span>: {{estimate.id}}</h2>
             <hr>
             <jhi-alert-error></jhi-alert-error>
             <dl class="row-md jh-entity-details">
@@ -29,7 +29,7 @@
                 <dt><span jhiTranslate="logValueApp.estimate.vehicleType">Vehicle Type</span></dt>
                 <dd>
                     <div *ngIf="estimate.vehicleTypeId">
-                        <a [routerLink]="['/vehicle-type', estimate.vehicleTypeId, 'view']">{{estimate.vehicleTypeId}}</a>
+                        <a [routerLink]="['/vehicle-type', estimate.vehicleTypeId, 'view']">{{estimate.vehicleTypeName}}</a>
                     </div>
                 </dd>
             </dl>
