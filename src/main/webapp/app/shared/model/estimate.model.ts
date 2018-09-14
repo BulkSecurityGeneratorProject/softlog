@@ -12,6 +12,7 @@ export interface IEstimate {
     ownerId?: Number;
     ownerName?: string;
     freightAmount?: Number;
+    vehicleTypeName?: string;
 }
 
 export class Estimate implements IEstimate {
@@ -26,7 +27,8 @@ export class Estimate implements IEstimate {
         public vehicleTypeId?: number,
         public ownerId?: Number,
         public ownerName?: string,
-        public freightAmount?: Number
+        public freightAmount?: Number,
+        public vehicleTypeName?: string
     ) {
         this.containsToll = false;
     }
