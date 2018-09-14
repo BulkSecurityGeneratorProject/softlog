@@ -4,6 +4,7 @@ package com.softplan.logvalue.service.impl;
 import static com.softplan.logvalue.service.util.NullsUtil.*;
 
 import com.softplan.logvalue.service.EstimateService;
+import com.softplan.logvalue.service.UserService;
 import com.softplan.logvalue.domain.Estimate;
 import com.softplan.logvalue.domain.User;
 import com.softplan.logvalue.domain.VehicleType;
@@ -46,22 +47,22 @@ public class EstimateServiceImpl implements EstimateService {
     private final EstimateMapper estimateMapper;
 
 
+    private final UserRepository userRepository; 
     private final RoadTypeRepository roadTypeRepository;
-    private final VehicleTypeRepository vehicleTypeRepository; 
+    private final VehicleTypeRepository vehicleTypeRepository;
     
-
-    private final UserRepository userRepository;
 
     public EstimateServiceImpl(EstimateRepository estimateRepository, 
                                EstimateMapper estimateMapper, 
                                UserRepository userRepository,
                                RoadTypeRepository roadTypeRepository,
-                               VehicleTypeRepository vehicleTypeRepository) {
+                               VehicleTypeRepository vehicleTypeRepository
+                               ) {
         this.estimateRepository = estimateRepository;
         this.estimateMapper = estimateMapper;
-        this.userRepository = userRepository;
         this.roadTypeRepository = roadTypeRepository;
         this.vehicleTypeRepository = vehicleTypeRepository;
+        this.userRepository = userRepository;
     }
 
     /**
@@ -71,7 +72,7 @@ public class EstimateServiceImpl implements EstimateService {
      * @return the persisted entity
      */
     @Override
-    public EstimateDTO save(EstimateDTO estimateDTO) {
+    public EstimateDTO save(EstimateDTO estimateDTO, User currenteUser) {
         log.debug("Request to save Estimate : {}", estimateDTO);
 
         // TODO Validações
@@ -83,7 +84,8 @@ public class EstimateServiceImpl implements EstimateService {
         Estimate estimate = estimateMapper.toEntity(estimateDTO);
 
         // TODO Usuario logado
-        estimate.setOwner(getCurrentUser());
+        User onwer = this.userRepository.findById(currenteUser.getId()).get();
+        estimate.setOwner(onwer);
 
         estimate.setCreatedAt(ZonedDateTime.now());
 
@@ -224,10 +226,14 @@ public class EstimateServiceImpl implements EstimateService {
         return currentValue;
     }
 
-    private User getCurrentUser() {
+    /*@SuppressWarnings("static-access")
+	public User getCurrentUser() {
+    	
+    	System.out.println("Current User >>>>>>>>> " + userService.getCurrentUser());
+    	
         Optional<User> user = this.userRepository.findOneByLogin(SecurityUtils.getCurrentUserLogin().get());
         return user.orElseThrow(() -> new UserNotActivatedException("User was not logged"));
-    }
+    }*/
 
     /**
      * Get all the estimates.

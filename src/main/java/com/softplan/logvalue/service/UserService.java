@@ -7,6 +7,7 @@ import com.softplan.logvalue.config.Constants;
 import com.softplan.logvalue.repository.UserRepository;
 import com.softplan.logvalue.security.AuthoritiesConstants;
 import com.softplan.logvalue.security.SecurityUtils;
+import com.softplan.logvalue.security.UserNotActivatedException;
 import com.softplan.logvalue.service.util.RandomUtil;
 import com.softplan.logvalue.service.dto.UserDTO;
 
@@ -42,6 +43,7 @@ public class UserService {
     private final AuthorityRepository authorityRepository;
 
     private final CacheManager cacheManager;
+        
 
     public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder, AuthorityRepository authorityRepository, CacheManager cacheManager) {
         this.userRepository = userRepository;
@@ -269,5 +271,10 @@ public class UserService {
     private void clearUserCaches(User user) {
         Objects.requireNonNull(cacheManager.getCache(UserRepository.USERS_BY_LOGIN_CACHE)).evict(user.getLogin());
         Objects.requireNonNull(cacheManager.getCache(UserRepository.USERS_BY_EMAIL_CACHE)).evict(user.getEmail());
+    }
+    
+    public User getCurrentUser() {
+        Optional<User> user = this.userRepository.findOneByLogin(SecurityUtils.getCurrentUserLogin().get());
+        return user.orElseThrow(() -> new UserNotActivatedException("User was not logged"));
     }
 }

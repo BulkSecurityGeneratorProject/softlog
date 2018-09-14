@@ -1,10 +1,20 @@
 package com.softplan.logvalue.web.rest;
 
-import com.softplan.logvalue.LogValueApp;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.doNothing;
+import static org.mockito.Mockito.when;
 
+import com.softplan.logvalue.LogValueApp;
+import com.softplan.logvalue.domain.Authority;
 import com.softplan.logvalue.domain.Estimate;
+import com.softplan.logvalue.domain.User;
+import com.softplan.logvalue.domain.VehicleType;
 import com.softplan.logvalue.repository.EstimateRepository;
+import com.softplan.logvalue.repository.UserRepository;
+import com.softplan.logvalue.security.AuthoritiesConstants;
 import com.softplan.logvalue.service.EstimateService;
+import com.softplan.logvalue.service.MailService;
+import com.softplan.logvalue.service.UserService;
 import com.softplan.logvalue.service.dto.EstimateDTO;
 import com.softplan.logvalue.service.mapper.EstimateMapper;
 import com.softplan.logvalue.web.rest.errors.ExceptionTranslator;
@@ -12,7 +22,9 @@ import com.softplan.logvalue.web.rest.errors.ExceptionTranslator;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.web.PageableHandlerMethodArgumentResolver;
@@ -28,8 +40,10 @@ import java.time.Instant;
 import java.time.ZonedDateTime;
 import java.time.ZoneOffset;
 import java.time.ZoneId;
+import java.util.HashSet;
 import java.util.List;
-
+import java.util.Optional;
+import java.util.Set;
 
 import static com.softplan.logvalue.web.rest.TestUtil.sameInstant;
 import static com.softplan.logvalue.web.rest.TestUtil.createFormattingConversionService;
@@ -58,6 +72,18 @@ public class EstimateResourceIntTest {
 
     private static final Float DEFAULT_TOLL_VALUE = 1F;
     private static final Float UPDATED_TOLL_VALUE = 2F;
+    
+    private static final Float DEFAULT_FREIGHT_VALUE = 1F;
+    private static final Float UPDATED_FREIGHT_VALUE = 2F;
+    
+    private static final Long DEFAULT_OWNER_VALUE = 1L;
+    private static final Long UPDATED_OWNRE_VALUE = 2L;
+    
+    private static final Long DEFAULT_VEHICLE_VALUE = 1L;
+    private static final Long UPDATED_VEHICLE_VALUE = 2L;
+
+    private static final Integer DEFAULT_LOAD_VALUE = 1;
+    private static final Integer UPDATED_LOAD_VALUE = 2;
 
     private static final ZonedDateTime DEFAULT_CREATED_AT = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneOffset.UTC);
     private static final ZonedDateTime UPDATED_CREATED_AT = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
@@ -85,17 +111,39 @@ public class EstimateResourceIntTest {
 
     private MockMvc restEstimateMockMvc;
 
+    private MockMvc restUserMockMvc;
+
     private Estimate estimate;
 
+    @Autowired
+    private UserRepository userRepository;
+    
+    @Mock
+    private MailService mockMailService;
+    
+    @Mock
+    private UserService mockUserService;
+    
+    
     @Before
     public void setup() {
         MockitoAnnotations.initMocks(this);
-        final EstimateResource estimateResource = new EstimateResource(estimateService);
+        doNothing().when(mockMailService).sendActivationEmail(any());
+        
+        final EstimateResource estimateResource = new EstimateResource(estimateService, mockUserService);
+        
         this.restEstimateMockMvc = MockMvcBuilders.standaloneSetup(estimateResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setControllerAdvice(exceptionTranslator)
             .setConversionService(createFormattingConversionService())
             .setMessageConverters(jacksonMessageConverter).build();
+
+        AccountResource accountUserMockResource =
+            new AccountResource(userRepository, mockUserService, mockMailService);
+            
+        this.restUserMockMvc = MockMvcBuilders.standaloneSetup(accountUserMockResource)
+            .setControllerAdvice(exceptionTranslator)
+            .build();    
     }
 
     /**
@@ -110,6 +158,9 @@ public class EstimateResourceIntTest {
             .nonPavedHighwayAmount(DEFAULT_NON_PAVED_HIGHWAY_AMOUNT)
             .containsToll(DEFAULT_CONTAINS_TOLL)
             .tollValue(DEFAULT_TOLL_VALUE)
+            .freightAmount(DEFAULT_FREIGHT_VALUE)
+            .loadAmount(DEFAULT_LOAD_VALUE)
+            .vehicleType(new VehicleType(DEFAULT_VEHICLE_VALUE))
             .createdAt(DEFAULT_CREATED_AT);
         return estimate;
     }
@@ -122,10 +173,14 @@ public class EstimateResourceIntTest {
     @Test
     @Transactional
     public void createEstimate() throws Exception {
+
+    	prepareLoggedUser();
+
         int databaseSizeBeforeCreate = estimateRepository.findAll().size();
 
         // Create the Estimate
         EstimateDTO estimateDTO = estimateMapper.toDto(estimate);
+        
         restEstimateMockMvc.perform(post("/api/estimates")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
             .content(TestUtil.convertObjectToJsonBytes(estimateDTO)))
@@ -139,7 +194,6 @@ public class EstimateResourceIntTest {
         assertThat(testEstimate.getNonPavedHighwayAmount()).isEqualTo(DEFAULT_NON_PAVED_HIGHWAY_AMOUNT);
         assertThat(testEstimate.isContainsToll()).isEqualTo(DEFAULT_CONTAINS_TOLL);
         assertThat(testEstimate.getTollValue()).isEqualTo(DEFAULT_TOLL_VALUE);
-        assertThat(testEstimate.getCreatedAt()).isEqualTo(DEFAULT_CREATED_AT);
     }
 
     @Test
@@ -315,5 +369,27 @@ public class EstimateResourceIntTest {
     public void testEntityFromId() {
         assertThat(estimateMapper.fromId(42L).getId()).isEqualTo(42);
         assertThat(estimateMapper.fromId(null)).isNull();
+    }
+
+
+
+    private void prepareLoggedUser() throws Exception {
+        Set<Authority> authorities = new HashSet();
+        Authority authority = new Authority();
+        authority.setName(AuthoritiesConstants.ADMIN);
+        authorities.add(authority);
+
+        User user = new User();
+        user.setId(3L);
+        user.setLogin("test");
+        user.setFirstName("john");
+        user.setLastName("doe");
+        user.setEmail("john.doe@jhipster.com");
+        user.setImageUrl("http://placehold.it/50x50");
+        user.setLangKey("en");
+        user.setAuthorities(authorities);
+        
+        when(mockUserService.getCurrentUser()).thenReturn(user);
+        
     }
 }

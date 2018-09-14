@@ -1,6 +1,9 @@
 package com.softplan.logvalue.domain;
 
 import io.swagger.annotations.ApiModel;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -36,6 +39,15 @@ public class VehicleType implements Serializable {
 
     @Column(name = "maximum_load")
     private Integer maximumLoad;
+
+    public VehicleType() {
+        super();
+    }
+
+    public VehicleType(Long id) {
+        super();
+        this.id = id;
+    }
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {

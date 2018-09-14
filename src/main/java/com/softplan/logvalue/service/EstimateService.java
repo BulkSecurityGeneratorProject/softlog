@@ -1,5 +1,6 @@
 package com.softplan.logvalue.service;
 
+import com.softplan.logvalue.domain.User;
 import com.softplan.logvalue.service.dto.EstimateDTO;
 
 import org.springframework.data.domain.Page;
@@ -18,7 +19,7 @@ public interface EstimateService {
      * @param estimateDTO the entity to save
      * @return the persisted entity
      */
-    EstimateDTO save(EstimateDTO estimateDTO);
+    EstimateDTO save(EstimateDTO estimateDTO, User currenteUser);
 
     /**
      * Get all the estimates.
@@ -43,4 +44,5 @@ public interface EstimateService {
      * @param id the id of the entity
      */
     void delete(Long id);
+           
 }

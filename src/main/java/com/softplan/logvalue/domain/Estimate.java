@@ -168,6 +168,7 @@ public class Estimate implements Serializable {
     public void setVehicleType(VehicleType vehicleType) {
         this.vehicleType = vehicleType;
     }
+    
 
     /**
      * @return the loadAmount
@@ -181,6 +182,11 @@ public class Estimate implements Serializable {
      */
     public void setLoadAmount(Integer loadAmount) {
         this.loadAmount = loadAmount;
+    }
+    
+    public Estimate loadAmount(Integer loadAmount) {
+        this.loadAmount = loadAmount;
+        return this;
     }
 
     /**
@@ -196,7 +202,19 @@ public class Estimate implements Serializable {
     public void setOwner(User owner) {
         this.owner = owner;
     }
+    
+    public Estimate owner(User owner) {
+        this.owner = owner;
+        return this;
+    }
 
+    
+    public Estimate freightAmount(Float freightAmount) {
+    	 this.freightAmount = freightAmount;
+        return this;
+        
+    }
+    
     /**
      * @return the freightAmount
      */

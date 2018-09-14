@@ -2,6 +2,7 @@ package com.softplan.logvalue.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 import com.softplan.logvalue.service.EstimateService;
+import com.softplan.logvalue.service.UserService;
 import com.softplan.logvalue.web.rest.errors.BadRequestAlertException;
 import com.softplan.logvalue.web.rest.util.HeaderUtil;
 import com.softplan.logvalue.web.rest.util.PaginationUtil;
@@ -34,9 +35,11 @@ public class EstimateResource {
     private static final String ENTITY_NAME = "estimate";
 
     private final EstimateService estimateService;
+    private final UserService userService;
 
-    public EstimateResource(EstimateService estimateService) {
+    public EstimateResource(EstimateService estimateService, UserService userService) {
         this.estimateService = estimateService;
+        this.userService = userService;
     }
 
     /**
@@ -50,10 +53,11 @@ public class EstimateResource {
     @Timed
     public ResponseEntity<EstimateDTO> createEstimate(@RequestBody EstimateDTO estimateDTO) throws URISyntaxException {
         log.debug("REST request to save Estimate : {}", estimateDTO);
+        
         if (estimateDTO.getId() != null) {
             throw new BadRequestAlertException("A new estimate cannot already have an ID", ENTITY_NAME, "idexists");
         }
-        EstimateDTO result = estimateService.save(estimateDTO);
+        EstimateDTO result = estimateService.save(estimateDTO, userService.getCurrentUser());
         return ResponseEntity.created(new URI("/api/estimates/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
             .body(result);
@@ -75,7 +79,7 @@ public class EstimateResource {
         if (estimateDTO.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
-        EstimateDTO result = estimateService.save(estimateDTO);
+        EstimateDTO result = estimateService.save(estimateDTO, userService.getCurrentUser());
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, estimateDTO.getId().toString()))
             .body(result);
