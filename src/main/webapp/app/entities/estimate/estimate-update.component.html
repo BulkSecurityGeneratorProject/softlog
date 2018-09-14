@@ -9,14 +9,7 @@
                     <input type="text" class="form-control" id="id" name="id"
                         [(ngModel)]="estimate.id" readonly />
                 </div>
-
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="logValueApp.estimate.roadType" for="field_roadType">Road Type</label>
-                    <select class="form-control" id="field_roadType" name="roadType" [(ngModel)]="estimate.roadTypeId" >
-                        <option [ngValue]="null"></option>
-                        <option [ngValue]="roadTypeOption.id" *ngFor="let roadTypeOption of roadtypes; trackBy: trackRoadTypeById">{{roadTypeOption.name}}</option>
-                    </select>
-                </div>
+            
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="logValueApp.estimate.vehicleType" for="field_vehicleType">Vehicle Type</label>
                     <select class="form-control" id="field_vehicleType" name="vehicleType" [(ngModel)]="estimate.vehicleTypeId" >

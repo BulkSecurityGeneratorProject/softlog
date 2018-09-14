@@ -25,12 +25,7 @@
                 <dd>
                     <span>{{estimate.createdAt}}</span>
                 </dd>
-                <dt><span jhiTranslate="logValueApp.estimate.roadType">Road Type</span></dt>
-                <dd>
-                    <div *ngIf="estimate.roadTypeId">
-                        <a [routerLink]="['/road-type', estimate.roadTypeId, 'view']">{{estimate.roadTypeId}}</a>
-                    </div>
-                </dd>
+                
                 <dt><span jhiTranslate="logValueApp.estimate.vehicleType">Vehicle Type</span></dt>
                 <dd>
                     <div *ngIf="estimate.vehicleTypeId">

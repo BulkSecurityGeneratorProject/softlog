@@ -17,7 +17,6 @@
             <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="pavedHighwayAmount"><span jhiTranslate="logValueApp.estimate.pavedHighwayAmount">Paved Highway Amount</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="nonPavedHighwayAmount"><span jhiTranslate="logValueApp.estimate.nonPavedHighwayAmount">Non Paved Highway Amount</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="roadTypeId"><span jhiTranslate="logValueApp.estimate.roadType">Road Type</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="vehicleTypeId"><span jhiTranslate="logValueApp.estimate.vehicleType">Vehicle Type</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="createdAt"><span jhiTranslate="logValueApp.estimate.createdAt">Created At</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th></th>
@@ -28,11 +27,6 @@
                 <td><a [routerLink]="['/estimate', estimate.id, 'view' ]">{{estimate.id}}</a></td>
                 <td>{{estimate.pavedHighwayAmount}}</td>
                 <td>{{estimate.nonPavedHighwayAmount}}</td>
-                <td>
-                    <div *ngIf="estimate.roadTypeId">
-                        <a [routerLink]="['../road-type', estimate.roadTypeId , 'view' ]" >{{estimate.roadTypeId}}</a>
-                    </div>
-                </td>
                 <td>
                     <div *ngIf="estimate.vehicleTypeId">
                         <a [routerLink]="['../vehicle-type', estimate.vehicleTypeId , 'view' ]" >{{estimate.vehicleTypeId}}</a>

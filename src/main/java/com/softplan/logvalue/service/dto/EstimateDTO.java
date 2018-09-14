@@ -28,8 +28,6 @@ public class EstimateDTO implements Serializable {
 
     private ZonedDateTime createdAt;
 
-    // private Long roadTypeId;
-
     private Long vehicleTypeId;
 
     private Long ownerId;
@@ -85,14 +83,6 @@ public class EstimateDTO implements Serializable {
     public void setCreatedAt(ZonedDateTime createdAt) {
         this.createdAt = createdAt;
     }
-
-    // public Long getRoadTypeId() {
-    //     return roadTypeId;
-    // }
-
-    // public void setRoadTypeId(Long roadTypeId) {
-    //     this.roadTypeId = roadTypeId;
-    // }
 
     public Long getVehicleTypeId() {
         return vehicleTypeId;
@@ -188,7 +178,6 @@ public class EstimateDTO implements Serializable {
             ", containsToll='" + isContainsToll() + "'" +
             ", tollValue=" + getTollValue() +
             ", createdAt='" + getCreatedAt() + "'" +
-            // ", roadType=" + getRoadTypeId() +
             ", vehicleType=" + getVehicleTypeId() +
             "}";
     }

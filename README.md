@@ -1,217 +1,139 @@
 # Softplan - LogValue
-This application was generated using JHipster 5.1.0, you can find documentation and help at [https://www.jhipster.tech/documentation-archive/v5.1.0](https://www.jhipster.tech/documentation-archive/v5.1.0).
+Esta é uma aplicação para cálculos de fretes fictícios.
 
 
 ## Live Demo
 
-Quer ver a aplicação agora ? Ela está disponível no seguinte endereço:
+Se desejas utilizar esta aplicação agora, ela está disponível no seguinte endereço:
 
-    `https`
+[LogValue live demo](https://maven.apache.org/download.cgi)
 
-Só um detalhe: como os Dynos do Heroku gostão de dormir no meio do expediente, caso a aplicação demore para responder, calma, 
-os Dynos já acordarão rapidinho e a aplicação funcionará normalmente. 
+Apenas um detalhe: Ela está em um plano free do Heroku e nele os Dynos costumam de dormir no meio do expediente. Caso a aplicação demore para responder ao primeiro request, calma, os Dynos já acordarão rapidinho e a aplicação funcionará normalmente. 
 
-## Requisitos 
+## Requisitos para desenvolvimento
 Esta aplicação foi homologada com o seguinte ambiente:
  
  - Java 8
  - [Maven 3.5.0](https://maven.apache.org/download.cgi)
- - [NodeJs 8.11.3](https://nodejs.org/en/) (não funcionará com o NodeJs 10.x)
+ - [Node.js 8.11.3](https://nodejs.org/en/) (não funcionará com o NodeJs 10.x)
  - [Yarn 1.9.4](https://yarnpkg.com/lang/en/docs/install/#debian-stable)
  
- Estes são requisitos obrigatórios, mas o Docker também poderá ser utilizado, opcionalmente. 
+ Estes são os requisitos obrigatórios, mas o Docker também poderá ser utilizado, opcionalmente, como veremos mais a frente. 
 
-## Development
+## Desenvolvimento
 
-Before you can build this project, you must install and configure the following dependencies on your machine:
+Antes de *buildar* este projeto, você deve instalar e configurar Node.js e o Yarn en sua estação:
 
-1. [Node.js][]: We use Node to run a development web server and build the project.
-   Depending on your system, you can install Node either from source or as a pre-packaged bundle.
-2. [Yarn][]: We use Yarn to manage Node dependencies.
-   Depending on your system, you can install Yarn either from source or as a pre-packaged bundle.
+1. Node.js: Usamos o Node para executar um servidor da Web de desenvolvimento e construir o projeto.
+2. Yarn: Usamos o Yarn para gerenciar as dependências do Node.
 
-After installing Node, you should be able to run the following command to install development tools.
-You will only need to run this command when dependencies change in [package.json](package.json).
+Depois de instalar o Node.js, você poderá executar o seguinte comando para instalar ferramentas de desenvolvimento. 
+Você só precisará executar este comando logo após o clone do projeto ou quando as dependências mudarem em package.json.
 
     yarn install
 
-We use yarn scripts and [Webpack][] as our build system.
-
-Run the following commands in two separate terminals to create a blissful development experience where your browser
-auto-refreshes when files change on your hard drive.
+Execute os seguintes comandos **em dois terminais separados** para iniciar a aplicação back-end e front-end. 
+Dessa forma você terá uma boa experiência de desenvolvimento, onde a apliação e seu navegador
+serão atualizados automaticamente conforme os arquivos são alterados.
 
     ./mvnw
     yarn start
 
-Após o comando `./mvnw`, a view será exibiba no endereço `http://localhost:8080`, contudo, logo após o clone do projeto ou após um `clean` ser executado, 
-o webpack precisa construir algumas estrututas da visão que são utilizadas para desenvolvimento, livereload etc. Para isso, utilize o seguinte comando 
+Após o comando `./mvnw`, a interface do projeto será exibiba no endereço [http://localhost:8080](http://localhost:8080). 
+Após o comando `yarn start`, o browser exibirá o interface do projeto no endereço [http://localhost:9000](http://localhost:9000). Este é o seu endereço para desenvolvimento do front-end.
+
+
+#### Troubleshooting#1
+Após o clone do projeto ou um `clean` ser executado, o webpack precisará reconstruir algumas estrututas da visão que são utilizadas no ambiente de desenvolvimento, livereload etc. Para isso, utilize o seguinte comando 
 para iniciar o back-end da aplicação:
 
 	./mvnw -P webpack
 
 As demais vezes em que o back-end for iniciado, não será mais necessário utilizar esse profile específico. 
 
-Isso não será necessário caso o front-end seja inicado com o yarn. Utilizando o comando `yarn start` para iniciar o front-end, a view será exibida no endereço 
-`http://localhost:9000`. Esta é a opção correta para desenvolvimento
+Isso não será necessário caso o front-end seja inicado com o yarn. Utilizando o comando `yarn start` para iniciar o front-end.
 
 
+ #### Troubleshooting#2 
+ 
+ Durante o build do projeto, podem ocorrer problemas com uma dependencia chamada **node-sass** [[BUG](https://github.com/sass/node-sass/issues/2032)].
+Caso isso ocorra, utilize o seguinte comando:
 
- ### Problemas com node-sass [BUG]
+    yarn
 
-
-[Yarn][] is also used to manage CSS and JavaScript dependencies used in this application. You can upgrade dependencies by
-specifying a newer version in [package.json](package.json). You can also run `yarn update` and `yarn install` to manage dependencies.
-Add the `help` flag on any command to see how you can use it. For example, `yarn help update`.
-
-The `yarn run` command will list all of the scripts available to run for this project.
-
-### Service workers
-
-Service workers are commented by default, to enable them please uncomment the following code.
-
-* The service worker registering script in index.html
-
-```html
-<script>
-    if ('serviceWorker' in navigator) {
-        navigator.serviceWorker
-        .register('./service-worker.js')
-        .then(function() { console.log('Service Worker Registered'); });
-    }
-</script>
-```
-
-Note: workbox creates the respective service worker and dynamically generate the `service-worker.js`
-
-### Managing dependencies
-
-For example, to add [Leaflet][] library as a runtime dependency of your application, you would run following command:
-
-    yarn add --exact leaflet
-
-To benefit from TypeScript type definitions from [DefinitelyTyped][] repository in development, you would run following command:
-
-    yarn add --dev --exact @types/leaflet
-
-Then you would import the JS and CSS files specified in library's installation instructions so that [Webpack][] knows about them:
-Edit [src/main/webapp/app/vendor.ts](src/main/webapp/app/vendor.ts) file:
-~~~
-import 'leaflet/dist/leaflet.js';
-~~~
-
-Edit [src/main/webapp/content/css/vendor.css](src/main/webapp/content/css/vendor.css) file:
-~~~
-@import '~leaflet/dist/leaflet.css';
-~~~
-Note: there are still few other things remaining to do for Leaflet that we won't detail here.
-
-For further instructions on how to develop with JHipster, have a look at [Using JHipster in development][].
-
-### Using angular-cli
-
-You can also use [Angular CLI][] to generate some custom client code.
-
-For example, the following command:
-
-    ng generate component my-component
-
-will generate few files:
-
-    create src/main/webapp/app/my-component/my-component.component.html
-    create src/main/webapp/app/my-component/my-component.component.ts
-    update src/main/webapp/app/app.module.ts
+Ele fará um reBuild da arvore de dependências da visão. 
 
 
-## Building for production
+### PWA
 
-To optimize the LogValue application for production, run:
+Esta aplicação contém um Service Workers simples. Não exatamente a torna uma PSW, mas experimente instalá-la em seu [desktop](https://developers.google.com/web/updates/2018/05/dpwa) ou [celular](https://developers.google.com/web/fundamentals/app-install-banners/) quando fizer um build de Produção.
+
+
+## Bancos de dados
+
+Esta aplicação utiliza dois bancos de dados. 
+Para desenvolvimento, no profile **dev**, um bando H2 armazenará os dados no disco, dentro da pasta target do projeto. 
+
+Para a produção, um banco **PostgreSQL** será utilizado. Ads credenciais desse banco devem ser configuradas no arquivo [application-prod.yml](/src/main/resources/config/application-prod.yml). Este arquivo está configurado para que o Docker forneca este banco de dados.
+
+
+## Build para Produção
+
+Para otimizar a aplicação para o ambiente de produção, utilize os comando:
 
     ./mvnw -Pprod clean package
 
-This will concatenate and minify the client CSS and JavaScript files. It will also modify `index.html` so it references these new files.
-To ensure everything worked, run:
+Ele irá concatenar e minificar todos os CSS e JavaScripts do cliente e atualizar as referências no `index.html`.
 
-    java -jar target/*.war
+Então, para saber se tudo esta funcionando bem, execute o `war` da aplicação rodando: 
 
-Then navigate to [http://localhost:8080](http://localhost:8080) in your browser.
+    java -jar target/logvalue.war
 
-Refer to [Using JHipster in production][] for more details.
+
+Então navegue para [http://localhost:8080](http://localhost:8080) e veja a mágica. Claro, seria legal configurar o banco de dados antes.
+
 
 ## Testing
 
-To launch your application's tests, run:
+Para disparar os testes da aplicação, use:
 
     ./mvnw clean test
 
 ### Client tests
 
-Unit tests are run by [Jest][] and written with [Jasmine][]. They're located in [src/test/javascript/](src/test/javascript/) and can be run with:
+Os testes unitários serão executados pelo [Jest][] e escritos com [Jasmine][]. Ele podem ser executados com:
 
     yarn test
 
-UI end-to-end tests are powered by [Protractor][], which is built on top of WebDriverJS. They're located in [src/test/javascript/e2e](src/test/javascript/e2e)
-and can be run by starting Spring Boot in one terminal (`./mvnw spring-boot:run`) and running the tests (`yarn run e2e`) in a second one.
-### Other tests
+Os testes de end-to-end da interface do usuário são fornecidos pelo [Protractor][]. Eles podem ser executados iniciando o Spring Boot em um terminal (`./mvnw spring-boot: run`) e executando os testes (`yarn run e2e`) em um segundo.
 
-Performance tests are run by [Gatling][] and written in Scala. They're located in [src/test/gatling](src/test/gatling).
-
-To use those tests, you must install Gatling from [https://gatling.io/](https://gatling.io/).
-
-For more information, refer to the [Running tests page][].
 
 ## Using Docker to simplify development (optional)
 
-You can use Docker to improve your JHipster development experience. A number of docker-compose configuration are available in the [src/main/docker](src/main/docker) folder to launch required third party services.
+>>>>>> Testar isso e descrver 
 
-For example, to start a postgresql database in a docker container, run:
+Você pode usar o Docker para melhorar sua experiência de desenvolvimento do JHipster. Várias configurações do docker-compose estão disponíveis na pasta [src/main/docker](src/main/docker) para iniciar os serviços necessários para a aplicação.
+
+Por exemplo, para iniciar um banco de dados postgresql em um contêiner docker, execute:
 
     docker-compose -f src/main/docker/postgresql.yml up -d
 
-To stop it and remove the container, run:
+Para pará-lo e remover o contêiner, execute:
 
     docker-compose -f src/main/docker/postgresql.yml down
 
-You can also fully dockerize your application and all the services that it depends on.
-To achieve this, first build a docker image of your app by running:
+Você também pode dockerizar totalmente seu aplicativo e todos os serviços dos quais ele depende. Para conseguir isso, primeiro crie uma imagem do docker do seu aplicativo executando:
 
     ./mvnw verify -Pprod dockerfile:build dockerfile:tag@version dockerfile:tag@commit
 
-Then run:
+E então execute:
 
     docker-compose -f src/main/docker/app.yml up -d
 
-For more information refer to [Using Docker and Docker-Compose][], this page also contains information on the docker-compose sub-generator (`jhipster docker-compose`), which is able to generate docker configurations for one or several JHipster applications.
+No final, uma imagem Docker de sua aplicação será criada e poderá ser *deployada* onde for necessário.
 
-## Continuous Integration (optional)
+ ## Scaffolding
+ Esta aplicação utilizou o JHipster 5.1.0 como scaffolding.
 
-To configure CI for your project, run the ci-cd sub-generator (`jhipster ci-cd`), this will let you generate configuration files for a number of Continuous Integration systems. Consult the [Setting up Continuous Integration][] page for more information.
-
-[JHipster Homepage and latest documentation]: https://www.jhipster.tech
-[JHipster 5.1.0 archive]: https://www.jhipster.tech/documentation-archive/v5.1.0
-
-[Using JHipster in development]: https://www.jhipster.tech/documentation-archive/v5.1.0/development/
-[Using Docker and Docker-Compose]: https://www.jhipster.tech/documentation-archive/v5.1.0/docker-compose
-[Using JHipster in production]: https://www.jhipster.tech/documentation-archive/v5.1.0/production/
-[Running tests page]: https://www.jhipster.tech/documentation-archive/v5.1.0/running-tests/
-[Setting up Continuous Integration]: https://www.jhipster.tech/documentation-archive/v5.1.0/setting-up-ci/
-
-[Gatling]: http://gatling.io/
-[Node.js]: https://nodejs.org/
-[Yarn]: https://yarnpkg.org/
-[Webpack]: https://webpack.github.io/
-[Angular CLI]: https://cli.angular.io/
-[BrowserSync]: http://www.browsersync.io/
-[Jest]: https://facebook.github.io/jest/
-[Jasmine]: http://jasmine.github.io/2.0/introduction.html
-[Protractor]: https://angular.github.io/protractor/
-[Leaflet]: http://leafletjs.com/
-[DefinitelyTyped]: http://definitelytyped.org/
-
-
-
-
-## Resolucao de Problemas
-
-### node-sass
- https://github.com/sass/node-sass/issues/2032
- https://github.com/sass/node-sass/issues/1918
+[JHipster Homepage and latest documentation](https://www.jhipster.tech)
+[JHipster 5.1.0 archive](https://www.jhipster.tech/documentation-archive/v5.1.0)

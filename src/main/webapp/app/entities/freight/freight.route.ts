@@ -24,7 +24,6 @@ export class FreightResolve implements Resolve<IEstimate> {
 }
 
 export const freightRoute: Routes = [
-    
     {
         path: 'freight/new',
         component: FreightComponent,
