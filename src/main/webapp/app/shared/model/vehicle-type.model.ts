@@ -4,6 +4,7 @@ export interface IVehicleType {
     factor?: number;
     regularLoad?: number;
     maximumLoad?: number;
+    vehicleTypeName?: string;
 }
 
 export class VehicleType implements IVehicleType {
@@ -12,6 +13,7 @@ export class VehicleType implements IVehicleType {
         public name?: string,
         public factor?: number,
         public regularLoad?: number,
-        public maximumLoad?: number
+        public maximumLoad?: number,
+        public vehicleTypeName?: string
     ) {}
 }

@@ -273,6 +273,10 @@ public class UserService {
         Objects.requireNonNull(cacheManager.getCache(UserRepository.USERS_BY_EMAIL_CACHE)).evict(user.getEmail());
     }
     
+    /**
+     * Criado apenas para ajudar nos testes
+     * @return
+     */
     public User getCurrentUser() {
         Optional<User> user = this.userRepository.findOneByLogin(SecurityUtils.getCurrentUserLogin().get());
         return user.orElseThrow(() -> new UserNotActivatedException("User was not logged"));

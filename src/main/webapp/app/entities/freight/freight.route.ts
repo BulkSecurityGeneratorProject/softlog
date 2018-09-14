@@ -31,7 +31,7 @@ export const freightRoute: Routes = [
             estimate: FreightResolve
         },
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_USER', 'ROLE_ADMIN'],
             pageTitle: 'logValueApp.freight.home.title'
         },
         canActivate: [UserRouteAccessService]

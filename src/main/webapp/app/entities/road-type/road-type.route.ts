@@ -34,7 +34,7 @@ export const roadTypeRoute: Routes = [
             pagingParams: JhiResolvePagingParams
         },
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_ADMIN'],
             defaultSort: 'id,asc',
             pageTitle: 'logValueApp.roadType.home.title'
         },
@@ -47,7 +47,7 @@ export const roadTypeRoute: Routes = [
             roadType: RoadTypeResolve
         },
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_ADMIN'],
             pageTitle: 'logValueApp.roadType.home.title'
         },
         canActivate: [UserRouteAccessService]
@@ -59,7 +59,7 @@ export const roadTypeRoute: Routes = [
             roadType: RoadTypeResolve
         },
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_ADMIN'],
             pageTitle: 'logValueApp.roadType.home.title'
         },
         canActivate: [UserRouteAccessService]
@@ -71,7 +71,7 @@ export const roadTypeRoute: Routes = [
             roadType: RoadTypeResolve
         },
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_ADMIN'],
             pageTitle: 'logValueApp.roadType.home.title'
         },
         canActivate: [UserRouteAccessService]
@@ -86,7 +86,7 @@ export const roadTypePopupRoute: Routes = [
             roadType: RoadTypeResolve
         },
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_ADMIN'],
             pageTitle: 'logValueApp.roadType.home.title'
         },
         canActivate: [UserRouteAccessService],

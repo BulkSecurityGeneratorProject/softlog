@@ -95,7 +95,7 @@ public class EstimateResource {
     @Timed
     public ResponseEntity<List<EstimateDTO>> getAllEstimates(Pageable pageable) {
         log.debug("REST request to get a page of Estimates");
-        Page<EstimateDTO> page = estimateService.findAll(pageable);
+        Page<EstimateDTO> page = estimateService.findAll(pageable, userService.getCurrentUser());
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/estimates");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }

@@ -59,7 +59,7 @@ export const estimateRoute: Routes = [
             estimate: EstimateResolve
         },
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_ADMIN'],
             pageTitle: 'logValueApp.estimate.home.title'
         },
         canActivate: [UserRouteAccessService]
@@ -71,7 +71,7 @@ export const estimateRoute: Routes = [
             estimate: EstimateResolve
         },
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_ADMIN'],
             pageTitle: 'logValueApp.estimate.home.title'
         },
         canActivate: [UserRouteAccessService]
@@ -86,7 +86,7 @@ export const estimatePopupRoute: Routes = [
             estimate: EstimateResolve
         },
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_ADMIN'],
             pageTitle: 'logValueApp.estimate.home.title'
         },
         canActivate: [UserRouteAccessService],

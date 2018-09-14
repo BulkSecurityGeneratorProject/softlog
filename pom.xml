@@ -8,10 +8,6 @@
     <packaging>war</packaging>
     <name>Log Value</name>
 
-    <repositories>
-        <!-- jhipster-needle-maven-repository -->
-    </repositories>
-
     <properties>
         <!-- Build properties -->
         <maven.version>3.0.0</maven.version>
@@ -84,6 +80,7 @@
         <sonar.surefire.reportsPath>${project.testresult.directory}/surefire-reports</sonar.surefire.reportsPath>
         <sonar.tests>${project.basedir}/src/test/</sonar.tests>
 
+		<maven.test.skip>true</maven.test.skip>
         <!-- jhipster-needle-maven-property -->
     </properties>
 
@@ -344,6 +341,14 @@
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-spring</artifactId>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-localconfig-connector</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-heroku-connector</artifactId>
         </dependency>
         <!-- jhipster-needle-maven-add-dependency -->
     </dependencies>
@@ -1118,6 +1123,42 @@
                     <version>${hibernate.version}</version>
                 </dependency>
             </dependencies>
+        </profile>
+        <profile>
+            <id>heroku</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <artifactId>maven-clean-plugin</artifactId>
+                        <version>${maven-clean-plugin.version}</version>
+                        <executions>
+                            <execution>
+                                <id>clean-artifacts</id>
+                                <phase>install</phase>
+                                <goals>
+                                    <goal>clean</goal>
+                                </goals>
+                                <configuration>
+                                    <excludeDefaultDirectories>true</excludeDefaultDirectories>
+                                    <filesets>
+                                        <fileset>
+                                            <directory>target</directory>
+                                            <excludes>
+                                                <exclude>*.war</exclude>
+                                            </excludes>
+                                            <followSymlinks>false</followSymlinks>
+                                        </fileset>
+                                        <fileset>
+                                            <directory>node_modules</directory>
+                                            <followSymlinks>false</followSymlinks>
+                                        </fileset>
+                                    </filesets>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
         </profile>
         <!-- jhipster-needle-maven-add-profile -->
     </profiles>

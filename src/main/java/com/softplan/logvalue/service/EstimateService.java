@@ -27,7 +27,7 @@ public interface EstimateService {
      * @param pageable the pagination information
      * @return the list of entities
      */
-    Page<EstimateDTO> findAll(Pageable pageable);
+    Page<EstimateDTO> findAll(Pageable pageable, User currenteUser);
 
 
     /**

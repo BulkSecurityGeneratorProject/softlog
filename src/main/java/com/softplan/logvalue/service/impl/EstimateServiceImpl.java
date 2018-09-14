@@ -12,6 +12,7 @@ import com.softplan.logvalue.repository.EstimateRepository;
 import com.softplan.logvalue.repository.RoadTypeRepository;
 import com.softplan.logvalue.repository.UserRepository;
 import com.softplan.logvalue.repository.VehicleTypeRepository;
+import com.softplan.logvalue.security.AuthoritiesConstants;
 import com.softplan.logvalue.security.SecurityUtils;
 import com.softplan.logvalue.security.UserNotActivatedException;
 import com.softplan.logvalue.service.dto.EstimateDTO;
@@ -129,23 +130,18 @@ public class EstimateServiceImpl implements EstimateService {
 
         // Custo trecho pavimentado
         currentValue += pavedCost(estimateDTO);
-        System.out.println(currentValue);
 
         //Acredcimo por Rodovia Não Pavimentada
         currentValue += nonPavedCost(estimateDTO);
-        System.out.println(currentValue);
 
         //Acredcimo por tipo de Veículo 
         currentValue  = vehicleTypeCost(currentValue, estimateDTO);
-        System.out.println(currentValue);
 
         // Acrescimo por excesso de carga
         currentValue  = overloadCost(currentValue, estimateDTO);        
-        System.out.println(currentValue);
 
         // Pedagio
         currentValue  = tollCost(currentValue, estimateDTO);
-        System.out.println(currentValue);
 
         estimateDTO.setFreightAmount(currentValue.floatValue());
     }
@@ -243,10 +239,17 @@ public class EstimateServiceImpl implements EstimateService {
      */
     @Override
     @Transactional(readOnly = true)
-    public Page<EstimateDTO> findAll(Pageable pageable) {
+    public Page<EstimateDTO> findAll(Pageable pageable, User currenteUser) {
         log.debug("Request to get all Estimates");
-        return estimateRepository.findAll(pageable)
-            .map(estimateMapper::toDto);
+
+        if(SecurityUtils.isCurrentUserInRole(AuthoritiesConstants.ADMIN)) {
+            return estimateRepository.findAll(pageable)
+                    .map(estimateMapper::toDto);
+        } else {
+
+            return estimateRepository.findAllByOwnerId(currenteUser.getId(), pageable)
+                    .map(estimateMapper::toDto);
+        }
     }
 
 
