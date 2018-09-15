@@ -281,4 +281,6 @@ public class UserService {
         Optional<User> user = this.userRepository.findOneByLogin(SecurityUtils.getCurrentUserLogin().get());
         return user.orElseThrow(() -> new UserNotActivatedException("User was not logged"));
     }
+    
+    
 }

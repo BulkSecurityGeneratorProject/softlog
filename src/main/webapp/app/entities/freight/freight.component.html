@@ -11,19 +11,21 @@
                         [(ngModel)]="estimate.id" readonly />
                 </div>
 
-                <div class="form-group">
+                <div class="form-group row">
                     <label class="form-control-label" jhiTranslate="logValueApp.freight.vehicleType" for="field_vehicleType">Vehicle Type</label>
                     
                     <p-selectButton id="field_vehicleType" name="vehicleType" optionLabel="name"
-                                    [options]="vehicletypes" [(ngModel)]="vehicletypesSelected">
+                                    [options]="vehicletypes" [(ngModel)]="vehicletypesSelected"
+                                    >
                     </p-selectButton>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group row">
                     <label class="form-control-label" jhiTranslate="logValueApp.freight.roadType" for="field_roadType">Road Type</label>
-                    <p-selectButton id="field_roadType" name="roadType" [options]="roadtypes" [(ngModel)]="roadtypesSelected" multiple="multiple">
+                    <p-selectButton id="field_roadType" name="roadType" [options]="roadtypes" 
+                                    [(ngModel)]="roadtypesSelected" multiple="multiple">
                         <ng-template let-item>
-                            <div style="padding: .5em 1em">
+                            <div style="padding: .5em 1em;">
                                 <img style="vertical-align: middle; margin-right: .5em" *ngIf="item.id === 1"
                                      src="../../../content/images/road/1.png" height="50px"/>
                                 <img style="vertical-align: middle; margin-right: .5em" *ngIf="item.id === 2"
@@ -34,45 +36,39 @@
                     </p-selectButton>
                 </div>
 
-                <div class="form-group">
-                    <div class="row justify-content-center">
-                        <div class="col-6">
-                            <div  *ngIf="isPavedRoadChecked()">
-                                <label class="form-control-label" jhiTranslate="logValueApp.freight.pavedHighwayAmount" for="field_pavedHighwayAmount">Paved Highway Amount</label>
-                                <input type="text" class="form-control" name="pavedHighwayAmount" id="field_pavedHighwayAmount"
-                                       [(ngModel)]="estimate.pavedHighwayAmount" mask="0*" />
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <div  *ngIf="isNonPavedRoadChecked()">
-                                <label class="form-control-label" jhiTranslate="logValueApp.freight.nonPavedHighwayAmount" for="field_nonPavedHighwayAmount">Non Paved Highway Amount</label>
-                                <input type="text" class="form-control" name="nonPavedHighwayAmount" id="field_nonPavedHighwayAmount"
-                                    [(ngModel)]="estimate.nonPavedHighwayAmount" mask="0*"/>
-                            </div>
-                        </div>
+                <div class="form-group row" *ngIf="isPavedRoadChecked()" >
+                    <label class="form-control-label" jhiTranslate="logValueApp.freight.pavedHighwayAmount" for="field_pavedHighwayAmount">Paved Highway Amount</label>
+                    <div class="col-md-5">
+                        <input type="text" class="form-control" name="pavedHighwayAmount" id="field_pavedHighwayAmount"
+                               [(ngModel)]="estimate.pavedHighwayAmount" mask="0*" />
                     </div>
-
+                </div>
+                <div class="form-group row" *ngIf="isNonPavedRoadChecked()">
+                    <label class="form-control-label" jhiTranslate="logValueApp.freight.nonPavedHighwayAmount" for="field_nonPavedHighwayAmount">Non Paved Highway Amount</label>
+                    <div class="col-md-5">
+                        <input type="text" class="form-control" name="nonPavedHighwayAmount" id="field_nonPavedHighwayAmount"
+                            [(ngModel)]="estimate.nonPavedHighwayAmount" mask="0*"/>
+                    </div>
                 </div>
 
-
                 <div class="form-group row">
-                    <label class="form-control-label" jhiTranslate="logValueApp.freight.loadAmount" for="field_loadAmount" class="col-md-3 col-form-label">
+                    <label class="form-control-label" jhiTranslate="logValueApp.freight.loadAmount" for="field_loadAmount" >
                         Load Amount
                     </label>
-                    <div class="col-md-9">
+                    <div class="col-md-5">
                         <input type="text" class="form-control" name="loadAmount" id="field_loadAmount"
                                 [(ngModel)]="estimate.loadAmount" mask="0*" />
                     </div>
                 </div>
 
-                <div class="form-group" >
+                <div class="form-group row" >
                     <label class="form-control-label" jhiTranslate="logValueApp.freight.containsToll" for="field_containsToll">Contains Toll</label>
                     <p-toggleButton name="containsToll" id="field_containsToll" [(ngModel)]="estimate.containsToll"></p-toggleButton>
                 </div>
 
                 <div class="form-group row" [hidden]="!estimate.containsToll">
-                    <label class="form-control-label" jhiTranslate="logValueApp.freight.tollValue" for="field_tollValue" class="col-md-3 col-form-label">Toll Value</label>
-                    <div class="col-md-9">
+                    <label class="form-control-label" jhiTranslate="logValueApp.freight.tollValue" for="field_tollValue" >Toll Value</label>
+                    <div class="col-md-5">
                         <input type="text" class="form-control" name="tollValue" id="field_tollValue"
                             [(ngModel)]="estimate.tollValue" currencyMask/>
                     </div>

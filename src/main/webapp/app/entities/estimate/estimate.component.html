@@ -18,6 +18,7 @@
             <th jhiSortBy="pavedHighwayAmount"><span jhiTranslate="logValueApp.estimate.pavedHighwayAmount">Paved Highway Amount</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="nonPavedHighwayAmount"><span jhiTranslate="logValueApp.estimate.nonPavedHighwayAmount">Non Paved Highway Amount</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="vehicleTypeId"><span jhiTranslate="logValueApp.estimate.vehicleType">Vehicle Type</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="freightAmount"><span jhiTranslate="logValueApp.estimate.freightAmount">Freight Amount</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="createdAt"><span jhiTranslate="logValueApp.estimate.createdAt">Created At</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th></th>
             </tr>
@@ -32,7 +33,8 @@
                         <a [routerLink]="['../vehicle-type', estimate.vehicleTypeId , 'view' ]" >{{estimate.vehicleTypeName}}</a>
                     </div>
                 </td>
-                <td>{{estimate.createdAt | date:'medium'}}</td>
+                <td>{{estimate.freightAmount | currency:'BRL':true}}</td>
+                <td>{{estimate.createdAt | date:'dd/MM/yyyy'}}</td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"

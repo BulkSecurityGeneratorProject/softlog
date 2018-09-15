@@ -76,15 +76,15 @@ public class EstimateServiceImpl implements EstimateService {
     public EstimateDTO save(EstimateDTO estimateDTO, User currenteUser) {
         log.debug("Request to save Estimate : {}", estimateDTO);
 
-        // TODO Validações
+        // Validações
         validate(estimateDTO);
 
-        //TODO Executar calculo        
+        // Executar calculo        
         calcFreightValue(estimateDTO);
 
         Estimate estimate = estimateMapper.toEntity(estimateDTO);
 
-        // TODO Usuario logado
+        // Usuario logado
         User onwer = this.userRepository.findById(currenteUser.getId()).get();
         estimate.setOwner(onwer);
 

@@ -23,7 +23,8 @@
             "tollValue": "Valor do Pedágio",
             "createdAt": "Criado em",
             "roadType": "Tipo de Rodovia",
-            "vehicleType": "Tipo de Veículo"
+            "vehicleType": "Tipo de Veículo",
+            "freightAmount": "Falor do Frete"
         }
     }
 }

@@ -23,7 +23,8 @@
             "tollValue": "Toll Value",
             "createdAt": "Created At",
             "roadType": "Road Type",
-            "vehicleType": "Vehicle Type"
+            "vehicleType": "Vehicle Type",
+            "freightAmount": "Freight Value"
         }
     }
 }

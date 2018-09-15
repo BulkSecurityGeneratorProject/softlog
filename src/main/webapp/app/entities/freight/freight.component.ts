@@ -15,7 +15,8 @@ import { VehicleTypeService } from 'app/entities/vehicle-type';
 
 @Component({
     selector: 'jhi-freight-update',
-    templateUrl: './freight.component.html'
+    templateUrl: './freight.component.html',
+    styleUrls: ['freight.scss']
 })
 export class FreightComponent implements OnInit {
     private _estimate: IEstimate;
