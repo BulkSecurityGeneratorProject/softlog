@@ -14,9 +14,16 @@
                 <div class="form-group row">
                     <label class="form-control-label" jhiTranslate="logValueApp.freight.vehicleType" for="field_vehicleType">Vehicle Type</label>
                     
-                    <p-selectButton id="field_vehicleType" name="vehicleType" optionLabel="name"
-                                    [options]="vehicletypes" [(ngModel)]="vehicletypesSelected"
-                                    >
+                    <p-selectButton id="field_vehicleType" name="vehicleType"  optionLabel="name"
+                                    [options]="vehicletypes" [(ngModel)]="vehicletypesSelected" >>
+                        <ng-template let-item>
+                            <div style="padding: .3em 1em">
+                                <span>{{item.name}}</span>
+                            </div>
+                            <div style="padding: .1em 1em; font-size: .8em;">
+                                <span>max: {{item.maximumLoad}}</span>
+                            </div>
+                        </ng-template>
                     </p-selectButton>
                 </div>
 
