@@ -1,14 +1,34 @@
-# Softplan - LogValue
+# Softplan - SoftLog
 Esta é uma aplicação para cálculos de fretes fictícios.
 
 
 ## Live Demo
 
-Se desejas utilizar esta aplicação agora, ela está disponível no seguinte endereço:
+Se desejar utilizar esta aplicação agora, ela está disponível no seguinte endereço:
 
-[LogValue live demo](https://maven.apache.org/download.cgi)
+[SoftLog live demo](https://soft-log.herokuapp.com/)
 
 Apenas um detalhe: Ela está em um plano free do Heroku e nele os Dynos costumam de dormir no meio do expediente. Caso a aplicação demore para responder ao primeiro request, calma, os Dynos já acordarão rapidinho e a aplicação funcionará normalmente. 
+
+## Builds prontos
+
+Caso queira executar a aplicação antes de fazer o seu próprio build, utilize os pacotes prontos disponíves no repositório:
+
+[Desenvolvimento](https://bitbucket.org/thiagosoaresjr/softplan_logvalue/downloads/softlog-dev.war)
+
+[Produção](https://bitbucket.org/thiagosoaresjr/softplan_logvalue/downloads/softlog-prod.war)
+
+Para executar a aplicação, apenas execute o seguinte comando:
+
+Desenvolvimento:
+
+    java -jar softlog-dev.war
+
+Produção: (Necessita configurar o banco de dados)
+
+    java -jar softlog-prod.war
+
+Então navegue para [http://localhost:8080](http://localhost:8080). 
 
 ## Requisitos para desenvolvimento
 Esta aplicação foi homologada com o seguinte ambiente:
@@ -33,18 +53,18 @@ Você só precisará executar este comando logo após o clone do projeto ou quan
     yarn install
 
 Execute os seguintes comandos **em dois terminais separados** para iniciar a aplicação back-end e front-end. 
-Dessa forma você terá uma boa experiência de desenvolvimento, onde a apliação e seu navegador
+Dessa forma você terá uma boa experiência de desenvolvimento, onde a aplicação e seu navegador
 serão atualizados automaticamente conforme os arquivos são alterados.
 
     ./mvnw
     yarn start
 
-Após o comando `./mvnw`, a interface do projeto será exibiba no endereço [http://localhost:8080](http://localhost:8080). 
+Após o comando `./mvnw`, a interface do projeto será exibida no endereço [http://localhost:8080](http://localhost:8080). 
 Após o comando `yarn start`, o browser exibirá o interface do projeto no endereço [http://localhost:9000](http://localhost:9000). Este é o seu endereço para desenvolvimento do front-end.
 
 
 #### Troubleshooting#1
-Após o clone do projeto ou um `clean` ser executado, o webpack precisará reconstruir algumas estrututas da visão que são utilizadas no ambiente de desenvolvimento, livereload etc. Para isso, utilize o seguinte comando 
+Após o clone do projeto ou um `clean` ser executado, o webpack precisará reconstruir algumas estruturas da visão que são utilizadas no ambiente de desenvolvimento, livereload etc. Para isso, utilize o seguinte comando 
 para iniciar o back-end da aplicação:
 
 	./mvnw -P webpack
@@ -56,7 +76,7 @@ Isso não será necessário caso o front-end seja inicado com o yarn. Utilizando
 
  #### Troubleshooting#2 
  
- Durante o build do projeto, podem ocorrer problemas com uma dependencia chamada **node-sass** [[BUG](https://github.com/sass/node-sass/issues/2032)].
+ Durante o build do projeto, podem ocorrer problemas com uma dependência chamada **node-sass** [[BUG](https://github.com/sass/node-sass/issues/2032)].
 Caso isso ocorra, utilize o seguinte comando:
 
     yarn
@@ -66,7 +86,7 @@ Ele fará um reBuild da arvore de dependências da visão.
 
 ### PWA
 
-Esta aplicação contém um Service Workers simples. Não exatamente a torna uma PSW, mas experimente instalá-la em seu [desktop](https://developers.google.com/web/updates/2018/05/dpwa) ou [celular](https://developers.google.com/web/fundamentals/app-install-banners/) quando fizer um build de Produção.
+Esta aplicação contém um *Service Worker* simples. Não exatamente a torna esta aplicação uma PWA, mas experimente instalá-la em seu [desktop](https://developers.google.com/web/updates/2018/05/dpwa) ou [celular](https://developers.google.com/web/fundamentals/app-install-banners/) quando fizer um build de Produção ou teste isso no [heroku](https://soft-log.herokuapp.com/)
 
 
 ## Bancos de dados
@@ -74,7 +94,7 @@ Esta aplicação contém um Service Workers simples. Não exatamente a torna uma
 Esta aplicação utiliza dois bancos de dados. 
 Para desenvolvimento, no profile **dev**, um bando H2 armazenará os dados no disco, dentro da pasta target do projeto. 
 
-Para a produção, um banco **PostgreSQL** será utilizado. Ads credenciais desse banco devem ser configuradas no arquivo [application-prod.yml](/src/main/resources/config/application-prod.yml). Este arquivo está configurado para que o Docker forneca este banco de dados.
+Para a produção, um banco **PostgreSQL** será utilizado. As credenciais desse banco devem ser configuradas no arquivo [application-prod.yml](/src/main/resources/config/application-prod.yml). Este arquivo está configurado para que o Docker forneca este banco de dados.
 
 
 ## Build para Produção
@@ -87,7 +107,7 @@ Ele irá concatenar e minificar todos os CSS e JavaScripts do cliente e atualiza
 
 Então, para saber se tudo esta funcionando bem, execute o `war` da aplicação rodando: 
 
-    java -jar target/logvalue.war
+    java -jar target/softlog.war
 
 
 Então navegue para [http://localhost:8080](http://localhost:8080) e veja a mágica. Claro, seria legal configurar o banco de dados antes.
@@ -108,9 +128,7 @@ Os testes unitários serão executados pelo [Jest][] e escritos com [Jasmine][].
 Os testes de end-to-end da interface do usuário são fornecidos pelo [Protractor][]. Eles podem ser executados iniciando o Spring Boot em um terminal (`./mvnw spring-boot: run`) e executando os testes (`yarn run e2e`) em um segundo.
 
 
-## Using Docker to simplify development (optional)
-
->>>>>> Testar isso e descrver 
+## Usando o Docker para facilitat o desenvolvmento (opicional)
 
 Você pode usar o Docker para melhorar sua experiência de desenvolvimento do JHipster. Várias configurações do docker-compose estão disponíveis na pasta [src/main/docker](src/main/docker) para iniciar os serviços necessários para a aplicação.
 

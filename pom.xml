@@ -355,7 +355,7 @@
 
     <build>
         <defaultGoal>spring-boot:run</defaultGoal>
-        <finalName>logvalue</finalName>
+        <finalName>softlog</finalName>
         <testResources>
             <testResource>
                 <directory>src/test/resources/</directory>
