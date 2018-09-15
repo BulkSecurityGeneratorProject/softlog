@@ -24,7 +24,10 @@
             "createdAt": "Created At",
             "roadType": "Road Type",
             "vehicleType": "Vehicle Type",
-            "freightAmount": "Freight Value"
+            "freightAmount": "Freight Value",
+            "errors": {
+                "vehicletypeoverload": "Vehicle Overload. Maximum load: {{max}}"
+            }
         }
     }
 }

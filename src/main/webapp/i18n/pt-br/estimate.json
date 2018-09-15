@@ -24,7 +24,10 @@
             "createdAt": "Criado em",
             "roadType": "Tipo de Rodovia",
             "vehicleType": "Tipo de Veículo",
-            "freightAmount": "Falor do Frete"
+            "freightAmount": "Falor do Frete",
+            "errors": {
+                "vehicletypeoverload": "Sobrecarga de veículo. Carga máxima: {{max}}"
+            }
         }
     }
 }

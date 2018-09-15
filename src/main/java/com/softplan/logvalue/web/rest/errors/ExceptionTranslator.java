@@ -105,4 +105,17 @@ public class ExceptionTranslator implements ProblemHandling {
             .build();
         return create(ex, problem, request);
     }
+
+    @ExceptionHandler(BusinessAlertException.class)
+    public ResponseEntity<Problem> businessAlertException(BusinessAlertException ex, NativeWebRequest request) {
+        Problem problem = Problem.builder()
+            .withStatus(Status.BAD_REQUEST)
+            .with("message", "TESTETEET")
+            .build();
+
+            System.out.println();
+
+
+        return create(ex, problem, request);
+    }
 }

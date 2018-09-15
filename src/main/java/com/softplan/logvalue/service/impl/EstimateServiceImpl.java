@@ -5,6 +5,7 @@ import static com.softplan.logvalue.service.util.NullsUtil.*;
 
 import com.softplan.logvalue.service.EstimateService;
 import com.softplan.logvalue.service.UserService;
+import com.google.common.collect.ImmutableMap;
 import com.softplan.logvalue.domain.Estimate;
 import com.softplan.logvalue.domain.User;
 import com.softplan.logvalue.domain.VehicleType;
@@ -18,6 +19,8 @@ import com.softplan.logvalue.security.UserNotActivatedException;
 import com.softplan.logvalue.service.dto.EstimateDTO;
 import com.softplan.logvalue.service.mapper.EstimateMapper;
 import com.softplan.logvalue.web.rest.errors.BadRequestAlertException;
+import com.softplan.logvalue.web.rest.errors.BusinessAlertException;
+import com.softplan.logvalue.web.rest.errors.CustomParameterizedException;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,9 +31,13 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
 /**
  * Service Implementation for managing Estimate.
@@ -143,7 +150,9 @@ public class EstimateServiceImpl implements EstimateService {
         // Pedagio
         currentValue  = tollCost(currentValue, estimateDTO);
 
-        estimateDTO.setFreightAmount(currentValue.floatValue());
+        BigDecimal bd = new BigDecimal(currentValue).setScale(2, RoundingMode.HALF_EVEN);
+        
+        estimateDTO.setFreightAmount(bd.floatValue());
     }
 
     // Add Custo Pavimentado
@@ -188,8 +197,9 @@ public class EstimateServiceImpl implements EstimateService {
                 this.vehicleTypeRepository.findById(estimateDTO.getVehicleTypeId())
                     .orElseThrow(() -> new BadRequestAlertException("The Vehicle Type is invalid", ENTITY_NAME, "vehicletypeidInvalid"));
 
-            if(estimateDTO.getLoadAmount() >= vehicle.getMaximumLoad()) {
-                throw new BadRequestAlertException("Vehicle Overload", ENTITY_NAME, "vehicletypeoverload");
+            if(estimateDTO.getLoadAmount() >= vehicle.getMaximumLoad()) {             
+                throw new CustomParameterizedException("logValueApp.estimate.errors.vehicletypeoverload", 
+                                                        ImmutableMap.of("max", vehicle.getMaximumLoad()));
             } else
 
             if(estimateDTO.getLoadAmount() > vehicle.getRegularLoad()) {

@@ -139,7 +139,7 @@
         "distanceamountInvalid": "The Highway Amount is invalid",
         "loadamount": "The Load Amount is null",
         "vehicletypeidInvalid": "The Vehicle Type is invalid",
-        "vehicletypeoverload": "Vehicle Overload"
+        "vehicletypeoverload": "Vehicle Overload {{foo}}"
     },
     "footer": "Este é o seu rodapé"
 }
