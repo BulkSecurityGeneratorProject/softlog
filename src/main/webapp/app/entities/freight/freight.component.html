@@ -5,7 +5,7 @@
             <h2 id="jhi-estimate-heading" jhiTranslate="logValueApp.freight.home.createOrEditLabel">Create or edit a Estimate</h2>
             <div>
                 <jhi-alert-error></jhi-alert-error>
-                <div class="form-group" [hidden]="!estimate.id">
+                <div class="form-group row" [hidden]="!estimate.id">
                     <label for="id" jhiTranslate="global.field.id">ID</label>
                     <input type="text" class="form-control" id="id" name="id"
                         [(ngModel)]="estimate.id" readonly />
