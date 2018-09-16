@@ -19,7 +19,6 @@ import com.softplan.logvalue.security.UserNotActivatedException;
 import com.softplan.logvalue.service.dto.EstimateDTO;
 import com.softplan.logvalue.service.mapper.EstimateMapper;
 import com.softplan.logvalue.web.rest.errors.BadRequestAlertException;
-import com.softplan.logvalue.web.rest.errors.BusinessAlertException;
 import com.softplan.logvalue.web.rest.errors.CustomParameterizedException;
 
 import org.slf4j.Logger;

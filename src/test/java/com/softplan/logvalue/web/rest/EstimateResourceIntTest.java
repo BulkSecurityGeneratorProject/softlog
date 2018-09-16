@@ -206,36 +206,6 @@ public class EstimateResourceIntTest {
     
     @Test
     @Transactional
-    public void checkCalculationExample01() throws Exception {
-
-        prepareLoggedUser();
-              
-        int databaseSizeBeforeCreate = estimateRepository.findAll().size();
-
-        
-        estimate.pavedHighwayAmount(100);
-        
-        // Create the Estimate
-        EstimateDTO estimateDTO = estimateMapper.toDto(estimate);
-        
-        restEstimateMockMvc.perform(post("/api/estimates")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(estimateDTO)))
-            .andExpect(status().isCreated());
-
-        // Validate the Estimate in the database
-        List<Estimate> estimateList = estimateRepository.findAll();
-        assertThat(estimateList).hasSize(databaseSizeBeforeCreate + 1);
-        Estimate testEstimate = estimateList.get(estimateList.size() - 1);
-        assertThat(testEstimate.getPavedHighwayAmount()).isEqualTo(DEFAULT_PAVED_HIGHWAY_AMOUNT);
-        assertThat(testEstimate.getNonPavedHighwayAmount()).isEqualTo(DEFAULT_NON_PAVED_HIGHWAY_AMOUNT);
-        assertThat(testEstimate.isContainsToll()).isEqualTo(DEFAULT_CONTAINS_TOLL);
-        assertThat(testEstimate.getTollValue()).isEqualTo(DEFAULT_TOLL_VALUE);
-    }
-
-
-    @Test
-    @Transactional
     public void createEstimateWithExistingId() throws Exception {
         int databaseSizeBeforeCreate = estimateRepository.findAll().size();
 
