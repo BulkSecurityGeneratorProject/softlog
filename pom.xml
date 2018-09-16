@@ -724,6 +724,74 @@
             </properties>
         </profile>
         <profile>
+            <id>gitflow</id>
+            <properties>
+                <profile.swagger>,gitflow</profile.swagger>
+            </properties>
+
+            <build>
+                <plugins>
+                    <!-- JGitFlow  -->
+                    <plugin>
+                        <groupId>external.atlassian.jgitflow</groupId>
+                        <artifactId>jgitflow-maven-plugin</artifactId>
+                        <version>1.0-m5.1</version>
+                        <configuration>
+                        
+                            <username>thiago.soares</username>
+                        
+                            <!-- Enable this to push to origin using SSH keys -->
+                            <enableSshAgent>true</enableSshAgent>
+                            
+                            <!-- Keep your maven submodules at the same version as the parent POM -->
+                            <autoVersionSubmodules>true</autoVersionSubmodules>
+                            
+                            <!--
+                            Pusing in-development features to origin allows all devs to see what each other are working on
+                            -->
+                            <pushFeatures>true</pushFeatures>
+
+                            <!--
+                            This allows the CI server (e.g. Jenkins) to automatically push new releases to
+                            origin; you can then either manually deploy them or, if you are doing Continuous
+                            Deployments, auto-deploy them to prod
+                            -->
+                            <pushReleases>true</pushReleases>
+
+                            <!--
+                            Hot Fixes should be pushed to origin as well so that any dev can pick them up
+                            -->
+                            <pushHotfixes>true</pushHotfixes>
+
+                            <!--
+                            Prevents deployments from dev workstations so that they can be done by a CI
+                            server
+                            -->
+                            <noDeploy>true</noDeploy>
+                            
+                            <noBuild>true</noBuild>
+                            
+                            <!--
+                            Whether to allow SNAPSHOT dependencies. Default is to fail when finding any SNAPSHOT. 
+                            -->
+                            <allowSnapshots>true</allowSnapshots>
+                            
+                            <flowInitContext>
+                                <masterBranchName>master</masterBranchName>
+                                <developBranchName>development</developBranchName>
+                                <featureBranchPrefix>feature-</featureBranchPrefix>
+                                <releaseBranchPrefix>release-</releaseBranchPrefix>
+                                <hotfixBranchPrefix>hotfix-</hotfixBranchPrefix>
+                                <versionTagPrefix>version-</versionTagPrefix>
+                            </flowInitContext>
+                            
+                        </configuration>
+                    </plugin>
+
+                </plugins>
+            </build>    
+        </profile>
+        <profile>
             <id>webpack</id>
             <build>
                 <plugins>
