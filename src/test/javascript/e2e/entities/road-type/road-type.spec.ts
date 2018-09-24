@@ -21,23 +21,6 @@ describe('RoadType e2e test', () => {
         expect(roadTypeComponentsPage.getTitle()).toMatch(/logValueApp.roadType.home.title/);
     });
 
-    it('should load create RoadType page', () => {
-        roadTypeComponentsPage.clickOnCreateButton();
-        roadTypeUpdatePage = new RoadTypeUpdatePage();
-        expect(roadTypeUpdatePage.getPageTitle()).toMatch(/logValueApp.roadType.home.createOrEditLabel/);
-        roadTypeUpdatePage.cancel();
-    });
-
-    it('should create and save RoadTypes', () => {
-        roadTypeComponentsPage.clickOnCreateButton();
-        roadTypeUpdatePage.setNameInput('name');
-        expect(roadTypeUpdatePage.getNameInput()).toMatch('name');
-        roadTypeUpdatePage.setFactorInput('5');
-        expect(roadTypeUpdatePage.getFactorInput()).toMatch('5');
-        roadTypeUpdatePage.save();
-        expect(roadTypeUpdatePage.getSaveButton().isPresent()).toBeFalsy();
-    });
-
     afterAll(() => {
         navBarPage.autoSignOut();
     });

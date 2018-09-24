@@ -21,8 +21,6 @@ export class EstimateUpdatePage {
     nonPavedHighwayAmountInput = element(by.id('field_nonPavedHighwayAmount'));
     containsTollInput = element(by.id('field_containsToll'));
     tollValueInput = element(by.id('field_tollValue'));
-    createdAtInput = element(by.id('field_createdAt'));
-    roadTypeSelect = element(by.id('field_roadType'));
     vehicleTypeSelect = element(by.id('field_vehicleType'));
 
     getPageTitle() {
@@ -56,37 +54,24 @@ export class EstimateUpdatePage {
         return this.tollValueInput.getAttribute('value');
     }
 
-    setCreatedAtInput(createdAt): promise.Promise<void> {
-        return this.createdAtInput.sendKeys(createdAt);
-    }
-
-    getCreatedAtInput() {
-        return this.createdAtInput.getAttribute('value');
-    }
-
-    roadTypeSelectLastOption(): promise.Promise<void> {
-        return this.roadTypeSelect
-            .all(by.tagName('option'))
-            .last()
-            .click();
-    }
-
-    roadTypeSelectOption(option): promise.Promise<void> {
-        return this.roadTypeSelect.sendKeys(option);
-    }
-
-    getRoadTypeSelect(): ElementFinder {
-        return this.roadTypeSelect;
-    }
-
-    getRoadTypeSelectedOption() {
-        return this.roadTypeSelect.element(by.css('option:checked')).getText();
-    }
-
     vehicleTypeSelectLastOption(): promise.Promise<void> {
+        // return element.all(by.repeater('let vehicleTypeOption of vehicletypes')).last().click();
+
+        // return this.vehicleTypeSelect
+        //     .all(by.tagName('option'))
+        //     .last()
+        //     .click();
+
+        // return element(by.id('field_vehicleType')).all(by.options).get(0).click();
+
+        // return this.vehicleTypeSelect
+        //      .all(by.repeater('vehicleTypeOption of vehicletypes'))
+        //      .first()
+        //      .click();
+
         return this.vehicleTypeSelect
             .all(by.tagName('option'))
-            .last()
+            .first()
             .click();
     }
 
