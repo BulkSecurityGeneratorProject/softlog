@@ -6,7 +6,7 @@ Esta é uma aplicação para cálculos de fretes fictícios.
 
 Se desejar utilizar esta aplicação agora, ela está disponível no seguinte endereço:
 
-[SoftLog live demo](https://soft-log.herokuapp.com/)
+[SoftLog live demo](https://soft-log.herokuapp.com/#/)
 
 Apenas um detalhe: Ela está em um plano free do Heroku e nele os Dynos costumam de dormir no meio do expediente. Caso a aplicação demore para responder ao primeiro request, calma, os Dynos já acordarão rapidinho e a aplicação funcionará normalmente. 
 
