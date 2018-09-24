@@ -1,12 +1,7 @@
 import { element, by, promise, ElementFinder } from 'protractor';
 
 export class RoadTypeComponentsPage {
-    createButton = element(by.id('jh-create-entity'));
     title = element.all(by.css('jhi-road-type div h2#page-heading span')).first();
-
-    clickOnCreateButton(): promise.Promise<void> {
-        return this.createButton.click();
-    }
 
     getTitle(): any {
         return this.title.getAttribute('jhiTranslate');

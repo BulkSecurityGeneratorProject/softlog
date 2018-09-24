@@ -48,9 +48,6 @@ describe('Estimate e2e test', () => {
             });
         estimateUpdatePage.setTollValueInput('5');
         expect(estimateUpdatePage.getTollValueInput()).toMatch('5');
-        estimateUpdatePage.setCreatedAtInput('01/01/2001' + protractor.Key.TAB + '02:30AM');
-        expect(estimateUpdatePage.getCreatedAtInput()).toContain('2001-01-01T02:30');
-        estimateUpdatePage.roadTypeSelectLastOption();
         estimateUpdatePage.vehicleTypeSelectLastOption();
         estimateUpdatePage.save();
         expect(estimateUpdatePage.getSaveButton().isPresent()).toBeFalsy();
