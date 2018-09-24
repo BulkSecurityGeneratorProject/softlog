@@ -4,7 +4,6 @@ import { RoadTypeComponentsPage, RoadTypeUpdatePage } from './road-type.page-obj
 
 describe('RoadType e2e test', () => {
     let navBarPage: NavBarPage;
-    let roadTypeUpdatePage: RoadTypeUpdatePage;
     let roadTypeComponentsPage: RoadTypeComponentsPage;
 
     beforeAll(() => {
