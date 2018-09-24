@@ -146,6 +146,6 @@ Desktop.ini
 
 
 ######################
-# ESLint
+# History
 ######################
-.history/*
+.history
