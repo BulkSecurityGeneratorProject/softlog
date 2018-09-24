@@ -86,7 +86,7 @@ Ele fará um reBuild da arvore de dependências da visão.
 
 ### PWA
 
-Esta aplicação contém um *Service Worker* simples. Não exatamente a torna esta aplicação uma PWA, mas experimente instalá-la em seu [desktop](https://developers.google.com/web/updates/2018/05/dpwa) ou [celular](https://developers.google.com/web/fundamentals/app-install-banners/) quando fizer um build de Produção ou teste isso no [heroku](https://soft-log.herokuapp.com/)
+Esta aplicação contém um *Service Worker* simples. Não exatamente a torna esta aplicação uma PWA, mas experimente instalá-la em seu [desktop](https://developers.google.com/web/updates/2018/05/dpwa) ou [celular](https://developers.google.com/web/fundamentals/app-install-banners/) quando fizer um build de Produção ou teste isso no [heroku](https://soft-log.herokuapp.com/#/)
 
 
 ## Bancos de dados
