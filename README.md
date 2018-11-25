@@ -4,7 +4,7 @@ Esta é uma aplicação para cálculos de fretes fictícios.
 
 ## Live Demo
 
-**A** Se desejar utilizar esta *aplicação* agora, ela está `disponível` no seguinte endereço:
+**A** Se desejar utilizar esta *aplicação* agora, ela está `disponível` no ~~seguinte~~ endereço:
 
 [SoftLog live demo](https://soft-log.herokuapp.com/)
 
